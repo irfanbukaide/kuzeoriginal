@@ -10,66 +10,102 @@
     </div>
 </div>
 
-<!-- ======= Footer ======= -->
-<div class="container-fluid c-padding-header c-footer c-both">
-    <div class="row">
-        <div class="col-lg col-md-6 col-sm-12 c-margin-bot">
-            <h5 class="c-judul-footer">Kuze Original</h5>
-            <ul class="c-ul-footer">
-                <li><a href="<?= site_url('Aboutus'); ?>">About Us</a></li>
-                <li><a href="<?= site_url('Contact'); ?>">Contact </a></li>
-            </ul>
-            <!--            --><?php //if ($logo != NULL): ?>
-            <!--                <img src="--><? //= base_url('upload/' . $logo); ?><!--" width="150" height="80"-->
-            <!--                     class="img-fluid mx-auto d-block"-->
-            <!--                     alt="">-->
-            <!--            --><?php //else: ?>
-            <!--                <img class="img-fluid mx-auto d-block" width="150" height="80"-->
-            <!--                     src="<?= base_url('assets/img/noimage.jpg'); ?>"-->
-            <!--                     alt="No Image">-->
-            <!--            --><?php //endif; ?>
-            <!--            <p class="c-nomer-footer"><b>Instagram :</b> --><? //= $instagram; ?><!--</p>-->
-            <!--            <p class="c-email-footer"><b>Email :</b> --><? //= $email; ?><!--</p>-->
-        </div>
 
-
-        <div class="col-lg col-md-6 col-sm-6">
-            <h5 class="c-judul-footer">Information</h5>
-            <ul class="c-ul-footer">
-                <li><a href="<?= site_url('resi'); ?>">Airway Bill Report</a></li>
-                <li><a href="<?= site_url('Order_status'); ?>">Order Status</a></li>
-                <li><a href="<?= site_url('Order_history'); ?>">Order History</a></li>
-            </ul>
-        </div>
-        <div class="col-lg col-md-6 col-sm-6">
-            <h5 class="c-judul-footer">Help</h5>
-            <ul class="c-ul-footer">
-
-                <li><a href="<?= site_url('Howtoorder'); ?>">How to Order</a></li>
-
-                <li><a href="<?= site_url('Faq'); ?>">FAQ</a></li>
-            </ul>
-        </div>
-        <div class="col-lg col-md-6 col-sm-6">
-            <p class="c-text-payment">We are support payment</p>
-            <img style="width:120px;" src="<?= base_url('assets/img/BCA-Kuze.png'); ?>" alt="">
-            <!--            <p class="c-text-secure">Secure Payment</p>-->
-            <!--            <i class="fa fa-lock c-lala-land fa-3x"></i>-->
-            <!--            <i class="fas fa-shield-alt fa-3x c-lala-land"></i>-->
-            <!--            <i class="fa fa-check fa-3x c-lala-land"></i>-->
+<footer class="main-footer">
+    <!-- Services block-->
+    <!--    <div class="bg-gray-100 text-dark-700 py-6">-->
+    <!--        <div class="container">-->
+    <!--            <div class="row">-->
+    <!--                <div class="col-lg-4 service-column">-->
+    <!--                    <svg class="svg-icon service-icon">-->
+    <!--                        <use xlink:href="#delivery-time-1"> </use>-->
+    <!--                    </svg>-->
+    <!--                    <div class="service-text">-->
+    <!--                        <h6 class="text-uppercase">Free shipping &amp; return</h6>-->
+    <!--                        <p class="text-muted font-weight-light text-sm mb-0">Free Shipping over $300</p>-->
+    <!--                    </div>-->
+    <!--                </div>-->
+    <!--                <div class="col-lg-4 service-column">-->
+    <!--                    <svg class="svg-icon service-icon">-->
+    <!--                        <use xlink:href="#money-1"> </use>-->
+    <!--                    </svg>-->
+    <!--                    <div class="service-text">-->
+    <!--                        <h6 class="text-uppercase">Money back guarantee</h6>-->
+    <!--                        <p class="text-muted font-weight-light text-sm mb-0">30 Days Money Back Guarantee</p>-->
+    <!--                    </div>-->
+    <!--                </div>-->
+    <!--                <div class="col-lg-4 service-column">-->
+    <!--                    <svg class="svg-icon service-icon">-->
+    <!--                        <use xlink:href="#customer-support-1"> </use>-->
+    <!--                    </svg>-->
+    <!--                    <div class="service-text">-->
+    <!--                        <h6 class="text-uppercase">020-800-456-747</h6>-->
+    <!--                        <p class="text-muted font-weight-light text-sm mb-0">24/7 Available Support</p>-->
+    <!--                    </div>-->
+    <!--                </div>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--    </div>-->
+    <!-- Main block - menus, subscribe form-->
+    <div class="py-6 bg-gray-300 text-muted">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-5 mb-lg-0">
+                    <div class="font-weight-bold text-uppercase text-lg text-dark mb-3">Kuze Original<span
+                                class="text-primary">.</span></div>
+                    <p>TRUSTED AND SECURE PAYMENT</p>
+                    <ul class="list-inline">
+                        <!--                        <li class="list-inline-item"><a href="#" target="_blank" title="twitter" class="text-muted text-hover-primary"><i class="fab fa-twitter"></i></a></li>-->
+                        <!--                        <li class="list-inline-item"><a href="#" target="_blank" title="facebook" class="text-muted text-hover-primary"><i class="fab fa-facebook"></i></a></li>-->
+                        <li class="list-inline-item"><a href="https://www.instagram.com/<?= $instagram; ?>"
+                                                        target="_blank" title="instagram"
+                                                        class="text-muted text-hover-primary"><i
+                                        class="fab fa-instagram"></i></a></li>
+                        <!--                        <li class="list-inline-item"><a href="#" target="_blank" title="pinterest" class="text-muted text-hover-primary"><i class="fab fa-pinterest"></i></a></li>-->
+                        <!--                        <li class="list-inline-item"><a href="#" target="_blank" title="vimeo" class="text-muted text-hover-primary"><i class="fab fa-vimeo"></i></a></li>-->
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
+                    <h6 class="text-uppercase text-dark mb-3">Information</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="<?= site_url('resi'); ?>" class="text-muted">Airway Bill Report</a></li>
+                        <li><a href="<?= site_url('Order_status'); ?>" class="text-muted">Order Status</a></li>
+                        <li><a href="<?= site_url('Order_history'); ?>" class="text-muted">Order History</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
+                    <h6 class="text-uppercase text-dark mb-3">Help</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="<?= site_url('Howtoorder'); ?>" class="text-muted">How to Order</a></li>
+                        <li><a href="<?= site_url('Faq'); ?>" class="text-muted">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h6 class="text-uppercase text-dark mb-3">We are support payment</h6>
+                    <img style="width:120px;" src="<?= base_url('assets/img/BCA-Kuze.png'); ?>" alt="">
+                </div>
+            </div>
         </div>
     </div>
-</div>
-
-
-<!-- ======= Copyright by EazyDev Team ======= -->
-<div class="container-fluid c-padding-header text-center c-padding-footer">
-    <h6 class="f-footer-bot">TRUSTED AND SECURE PAYMENT</h6>
-    <p class="c-footer-copy">Copyright © 2018 KuzeOriginal | Dev by EazyDev.</p>
-    <a href="mailto:<?= $email; ?>" target="_blank"><i class="fab fa-line fa-2x f-sosmed mr-2"></i></a>
-    <a href="https://www.instagram.com/<?= $instagram; ?>" target="_blank"><i class="fab fa-instagram fa-2x"></i></a>
-    <a href="https://wa.me/62<?= $whatsapp; ?>" target="_blank"><i class="fab fa-whatsapp fa-2x"></i></a>
-</div>
+    <!-- Copyright section of the footer-->
+    <div class="py-4 font-weight-light bg-gray-800 text-gray-300">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-left">
+                    <p class="mb-md-0">© 2018 Kuze Original. All rights reserved.</p>
+                </div>
+                <div class="col-md-6">
+                    <ul class="list-inline mb-0 mt-2 mt-md-0 text-center text-md-right">
+                        <!--                        <li class="list-inline-item"><img src="https://d19m59y37dris4.cloudfront.net/sell/1-2-2/img/visa.svg" alt="..." class="w-2rem"></li>-->
+                        <!--                        <li class="list-inline-item"><img src="https://d19m59y37dris4.cloudfront.net/sell/1-2-2/img/mastercard.svg" alt="..." class="w-2rem"></li>-->
+                        <!--                        <li class="list-inline-item"><img src="https://d19m59y37dris4.cloudfront.net/sell/1-2-2/img/paypal.svg" alt="..." class="w-2rem"></li>-->
+                        <!--                        <li class="list-inline-item"><img src="https://d19m59y37dris4.cloudfront.net/sell/1-2-2/img/western-union.svg" alt="..." class="w-2rem"></li>-->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
 <script>
     $(document).ready(function () {
         setTimeout(function () {

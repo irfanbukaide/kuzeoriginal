@@ -193,7 +193,7 @@ class Item extends CI_Controller
         $hasil = array();
         if (!$this->cache->get('sale_item')) {
             $data = $this->item->as_array()->where_i_sale('1')
-                ->order_by('created_at', 'DESC')
+                ->order_by('i_nama', 'DESC')
                 ->get_all();
 
             if ($data) {

@@ -3,32 +3,16 @@ include "layout/Header.php";
 include "layout/Menu.php";
 ?>
 
+    <section class="hero">
+        <div class="container">
+            <!-- Hero Content-->
+            <div class="hero-content pb-5 text-center">
+                <h2 class="hero-heading">Best Seller</h2>
+            </div>
+        </div>
+    </section>
+
     <div ng-app="kuze" ng-controller="BestSellerController">
-        <!-- ======= Banner Kategori Pesanan ======= -->
-        <div class="wrapper-cart mb-0">
-            <h5 class="text-center c-title-cart">Best Seller</h5>
-            <div class="c-breadcrumb text-center c-bread-padding">
-                <p>
-
-                </p>
-            </div>
-        </div>
-
-        <!-- ======= Breadcrumb ======= -->
-        <div class="wrapper-bredcrumb">
-            <div class="container-flu c-padding-header">
-                <div class="c-breadcrumb">
-                    <nav class="c-nav-breadcrumb">
-                        <a class="breadcrumb-item" href="<?= site_url('/'); ?>">Home</a>
-                        <i class="fa fa-arrow-right"></i>
-                        <span class="breadcrumb-item c-breadcrum-active"
-                              href="<?= $breadcumburl; ?>"><?= $breadcumb; ?></span>
-                    </nav>
-                </div>
-            </div>
-        </div>
-
-
         <!-- ======= Banner Kategori Pesanan ======= -->
 
         <div ng-if="best_sellers" class="container-fluid c-padding-header">

@@ -2,142 +2,439 @@
 include "layout/Header.php";
 include "layout/Menu.php";
 ?>
-
-
-    <div ng-app="kuze" ng-controller="kategoriController">
-        <!-- ======= Banner Kategori Pesanan ======= -->
-        <div class="wrapper-cart mb-0">
-            <h5 class="text-center c-title-cart">Category</h5>
-            <div class="c-breadcrumb text-center c-bread-padding">
-                <p>
-
-                </p>
+    <section class="hero">
+        <div class="container">
+            <!-- Hero Content-->
+            <div class="hero-content pb-5 text-center">
+                <h2 class="hero-heading">Category</h2>
             </div>
         </div>
+    </section>
+    <div class="container" ng-app="kuze" ng-controller="kategoriController">
+        <div class="row">
+            <!-- Grid -->
+            <div class="products-grid col-xl-9 col-lg-8 order-lg-2">
+                <header class="product-grid-header">
+                    <div class="mr-3 mb-3">
 
-        <!-- ======= Breadcrumb ======= -->
-        <div class="wrapper-bredcrumb">
-            <div class="container-flu c-padding-header">
-                <div class="c-breadcrumb">
-                    <nav class="c-nav-breadcrumb">
-                        <a class="breadcrumb-item" href="<?= site_url('/'); ?>">Home</a>
-                        <i class="fa fa-arrow-right"></i>
-                        <span class="breadcrumb-item c-breadcrum-active"
-                              href="<?= $breadcumburl; ?>"><?= $breadcumb; ?></span>
-                    </nav>
-                </div>
-            </div>
-        </div>
-
-
-        <!-- ======= Banner Kategori Pesanan ======= -->
-        <div class="container-fluid c-padding-header">
-            <div class="row">
-                <div class="col-12 col-sm-12 col-md-2 col-lg-2">
-                    <h5 class="card-title mb-0 text-left">Category</h5>
-                    <hr>
-                    <?php if ($menu_kategori != NULL): ?>
-                        <ul class="nav flex-column c-ul-footer">
-                            <?php foreach ($menu_kategori as $menukat): ?>
-                                <li class="nav-item mb-1 ml-1 ">
-                                    <a href="<?= site_url('category/' . $menukat->k_url); ?>"><?= $menukat->k_nama; ?></a>
-                                </li>
-                            <?php endforeach; ?>
-
-                        </ul>
-                    <?php else: ?>
-                        <p>Tidak ada kategori</p>
-                    <?php endif; ?>
-                    <hr>
-                </div>
-
-                <div class="col-12 col-sm-12 col-md-10 col-lg-10">
-                    <h5 class="card-title mb-0 text-left">Product</h5>
-                    <hr>
-                    <div class="container-fluid c-padding-header mt-3">
-                        <div class="row">
-                            <?php if (isset($item_kategori) && $item_kategori != NULL): ?>
-                                <?php foreach ($item_kategori as $kat): ?>
-
-                                    <?php $stok = $qty($kat->item->i_kode); ?>
-                                    <?php if ($stok >= 1 && $kat->i_kode != NULL): ?>
-                                        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                                            <div class="card" style="border: none;">
-                                                <?php if ($item_img($kat->item->i_kode) != NULL): ?>
-                                                    <a href="<?= site_url('category/' . $k_url . '/item/' . $kat->item->i_url . '/detil'); ?>">
-                                                        <img class="card-img-top"
-                                                             data-src="data:<?= $item_img($kat->item->i_kode)->ii_type . ';base64,' . (base64_encode($item_img($kat->item->i_kode)->ii_data)); ?>"
-                                                             src="<?= base_url('assets/img/loader.gif'); ?>"
-                                                             alt="<?= $item_img($kat->item->i_kode)->ii_kode; ?>">
-                                                    </a>
-                                                <?php else: ?>
-                                                    <a href="<?= base_url('Detil'); ?>">
-                                                        <img class="card-img-top"
-                                                             src="<?= base_url('assets/img/noimage.jpg'); ?>"
-                                                             alt="No Image">
-
-                                                    </a>
-                                                <?php endif; ?>
-
-                                                <div class="card-body text-center">
-                                                    <h5 id="title"
-                                                        class="card-title c-both c-title font-weight-bold"><?= $kat->item->i_nama; ?></h5>
-                                                    <h5 id="rupiah" class="c-price"><?= $kat->item->i_hrg; ?></h5>
-                                                    <a href="<?= site_url('category/' . $k_url . '/item/' . $kat->item->i_url . '/detil'); ?>"
-                                                       class="btn btn-csr c-cart c-cart-p">
-                                                        <i class="fa fa-plus c-cart-i mr-2"></i>
-                                                        <p class="d-inline-block m-0 font-weight-normal"
-                                                           style="font-size:1rem;">Add To Bag</p>
-                                                    </a>
-                                                </div>
-
-
-                                            </div>
-                                        </div>
-                                    <?php endif; ?>
-                                <?php endforeach; ?>
-                            <?php endif; ?>
-                            <?php if (isset($items) && $items != NULL): ?>
-                                <?php foreach ($items as $item): ?>
-                                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                                        <div class="card" style="border: none;">
-                                            <?php if ($item_img($item->i_kode) != NULL): ?>
-
-                                                <a href="<?= site_url('category/all/item/' . $item->i_url . '/detil'); ?>">
-                                                    <img class="card-img-top"
-                                                         data-src="data:<?= $item_img($item->i_kode)->ii_type . ';base64,' . (base64_encode($item_img($item->i_kode)->ii_data)); ?>"
-                                                         src="<?= base_url('assets/img/loader.gif'); ?>"
-                                                         alt="<?= $item_img($item->i_kode)->ii_kode; ?>">
-                                                </a>
-                                            <?php else: ?>
-                                                <a href="<?= site_url('category/all/item/' . $item->i_url . '/detil'); ?>">
-                                                    <img class="card-img-top"
-                                                         src="<?= base_url('assets/img/noimage.jpg'); ?>"
-                                                         alt="No Image">
-                                                </a>
-                                            <?php endif; ?>
-                                            <div class="card-body text-center">
-                                                <h5 id="title"
-                                                    class="card-title c-both c-title font-weight-bold"><?= $item->i_nama; ?></h5>
-                                                <h5 id="rupiah" class="c-price"><?= $item->i_hrg; ?></h5>
-                                                <a href="<?= site_url('category/all/item/' . $item->i_url . '/detil'); ?>"
-                                                   class="btn btn-csr c-cart c-cart-p">
-                                                    <i class="fa fa-plus c-cart-i mr-2"></i>
-                                                    <p class="d-inline-block m-0 font-weight-normal"
-                                                       style="font-size:1rem;">Add To Bag</p>
-                                                </a>
-                                            </div>
-                                        </div>
+                        Showing <strong>1-12 </strong>of <strong>158 </strong>products
+                    </div>
+                    <div class="mr-3 mb-3"><span class="mr-2">Show</span><a href="#"
+                                                                            class="product-grid-header-show active">12 </a><a
+                                href="#" class="product-grid-header-show ">24 </a><a href="#"
+                                                                                     class="product-grid-header-show ">All </a>
+                    </div>
+                    <div class="mb-3 d-flex align-items-center"><span class="d-inline-block mr-1">Sort by</span>
+                        <select class="custom-select w-auto border-0">
+                            <option value="orderby_0">Default</option>
+                            <option value="orderby_1">Popularity</option>
+                            <option value="orderby_2">Rating</option>
+                            <option value="orderby_3">Newest first</option>
+                        </select>
+                    </div>
+                </header>
+                <div class="row">
+                    <!-- product-->
+                    <div class="col-xl-4 col-sm-6">
+                        <div class="product">
+                            <div class="product-image">
+                                <div class="ribbon ribbon-info">Fresh</div>
+                                <img src="https://d19m59y37dris4.cloudfront.net/sell/1-2-2/img/product/serrah-galos-494312-unsplash.jpg"
+                                     alt="product" class="img-fluid">
+                                <div class="product-hover-overlay"><a href="detail.html"
+                                                                      class="product-hover-overlay-link"></a>
+                                    <div class="product-hover-overlay-buttons"><a href="#"
+                                                                                  class="btn btn-outline-dark btn-product-left"><i
+                                                    class="fa fa-shopping-cart"></i></a><a href="detail.html"
+                                                                                           class="btn btn-dark btn-buy"><i
+                                                    class="fa-search fa"></i><span
+                                                    class="btn-buy-label ml-2">View</span></a><a href="#"
+                                                                                                 data-toggle="modal"
+                                                                                                 data-target="#exampleModal"
+                                                                                                 class="btn btn-outline-dark btn-product-right"><i
+                                                    class="fa fa-expand-arrows-alt"></i></a>
                                     </div>
-
-                                <?php endforeach; ?>
-                            <?php else: ?>
-
-                            <?php endif; ?>
+                                </div>
+                            </div>
+                            <div class="py-2">
+                                <p class="text-muted text-sm mb-1">Jackets</p>
+                                <h3 class="h6 text-uppercase mb-1"><a href="detail.html" class="text-dark">White Tee</a>
+                                </h3><span class="text-muted">$40.00</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /product-->
+                    <!-- product-->
+                    <div class="col-xl-4 col-sm-6">
+                        <div class="product">
+                            <div class="product-image"><img
+                                        src="https://d19m59y37dris4.cloudfront.net/sell/1-2-2/img/product/kyle-loftus-590881-unsplash.jpg"
+                                        alt="product" class="img-fluid">
+                                <div class="product-hover-overlay"><a href="detail.html"
+                                                                      class="product-hover-overlay-link"></a>
+                                    <div class="product-hover-overlay-buttons"><a href="#"
+                                                                                  class="btn btn-outline-dark btn-product-left"><i
+                                                    class="fa fa-shopping-cart"></i></a><a href="detail.html"
+                                                                                           class="btn btn-dark btn-buy"><i
+                                                    class="fa-search fa"></i><span
+                                                    class="btn-buy-label ml-2">View</span></a><a href="#"
+                                                                                                 data-toggle="modal"
+                                                                                                 data-target="#exampleModal"
+                                                                                                 class="btn btn-outline-dark btn-product-right"><i
+                                                    class="fa fa-expand-arrows-alt"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="py-2">
+                                <p class="text-muted text-sm mb-1">Denim</p>
+                                <h3 class="h6 text-uppercase mb-1"><a href="detail.html" class="text-dark">Black
+                                        blouse</a></h3><span class="text-muted">$40.00</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /product-->
+                    <!-- product-->
+                    <div class="col-xl-4 col-sm-6">
+                        <div class="product">
+                            <div class="product-image">
+                                <div class="ribbon ribbon-primary">Sale</div>
+                                <img src="https://d19m59y37dris4.cloudfront.net/sell/1-2-2/img/product/kyle-loftus-596319-unsplash.jpg"
+                                     alt="product" class="img-fluid">
+                                <div class="product-hover-overlay"><a href="detail.html"
+                                                                      class="product-hover-overlay-link"></a>
+                                    <div class="product-hover-overlay-buttons"><a href="#"
+                                                                                  class="btn btn-outline-dark btn-product-left"><i
+                                                    class="fa fa-shopping-cart"></i></a><a href="detail.html"
+                                                                                           class="btn btn-dark btn-buy"><i
+                                                    class="fa-search fa"></i><span
+                                                    class="btn-buy-label ml-2">View</span></a><a href="#"
+                                                                                                 data-toggle="modal"
+                                                                                                 data-target="#exampleModal"
+                                                                                                 class="btn btn-outline-dark btn-product-right"><i
+                                                    class="fa fa-expand-arrows-alt"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="py-2">
+                                <p class="text-muted text-sm mb-1">Accessories</p>
+                                <h3 class="h6 text-uppercase mb-1"><a href="detail.html" class="text-dark">College
+                                        jacket</a></h3><span class="text-muted">$40.00</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /product-->
+                    <!-- product-->
+                    <div class="col-xl-4 col-sm-6">
+                        <div class="product">
+                            <div class="product-image"><img
+                                        src="https://d19m59y37dris4.cloudfront.net/sell/1-2-2/img/product/ethan-haddox-484912-unsplash.jpg"
+                                        alt="product" class="img-fluid">
+                                <div class="product-hover-overlay"><a href="detail.html"
+                                                                      class="product-hover-overlay-link"></a>
+                                    <div class="product-hover-overlay-buttons"><a href="#"
+                                                                                  class="btn btn-outline-dark btn-product-left"><i
+                                                    class="fa fa-shopping-cart"></i></a><a href="detail.html"
+                                                                                           class="btn btn-dark btn-buy"><i
+                                                    class="fa-search fa"></i><span
+                                                    class="btn-buy-label ml-2">View</span></a><a href="#"
+                                                                                                 data-toggle="modal"
+                                                                                                 data-target="#exampleModal"
+                                                                                                 class="btn btn-outline-dark btn-product-right"><i
+                                                    class="fa fa-expand-arrows-alt"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="py-2">
+                                <p class="text-muted text-sm mb-1">Denim</p>
+                                <h3 class="h6 text-uppercase mb-1"><a href="detail.html" class="text-dark">Carrot-fit
+                                        jeans</a></h3><span class="text-muted">$40.00</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /product-->
+                    <!-- product-->
+                    <div class="col-xl-4 col-sm-6">
+                        <div class="product">
+                            <div class="product-image"><img
+                                        src="https://d19m59y37dris4.cloudfront.net/sell/1-2-2/img/product/serrah-galos-494231-unsplash.jpg"
+                                        alt="product" class="img-fluid">
+                                <div class="product-hover-overlay"><a href="detail.html"
+                                                                      class="product-hover-overlay-link"></a>
+                                    <div class="product-hover-overlay-buttons"><a href="#"
+                                                                                  class="btn btn-outline-dark btn-product-left"><i
+                                                    class="fa fa-shopping-cart"></i></a><a href="detail.html"
+                                                                                           class="btn btn-dark btn-buy"><i
+                                                    class="fa-search fa"></i><span
+                                                    class="btn-buy-label ml-2">View</span></a><a href="#"
+                                                                                                 data-toggle="modal"
+                                                                                                 data-target="#exampleModal"
+                                                                                                 class="btn btn-outline-dark btn-product-right"><i
+                                                    class="fa fa-expand-arrows-alt"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="py-2">
+                                <p class="text-muted text-sm mb-1">Jackets</p>
+                                <h3 class="h6 text-uppercase mb-1"><a href="detail.html" class="text-dark">Striped
+                                        T-Shirt</a></h3><span class="text-muted">$40.00</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /product-->
+                    <!-- product-->
+                    <div class="col-xl-4 col-sm-6">
+                        <div class="product">
+                            <div class="product-image"><img
+                                        src="https://d19m59y37dris4.cloudfront.net/sell/1-2-2/img/product/averie-woodard-319832-unsplash.jpg"
+                                        alt="product" class="img-fluid">
+                                <div class="product-hover-overlay"><a href="detail.html"
+                                                                      class="product-hover-overlay-link"></a>
+                                    <div class="product-hover-overlay-buttons"><a href="#"
+                                                                                  class="btn btn-outline-dark btn-product-left"><i
+                                                    class="fa fa-shopping-cart"></i></a><a href="detail.html"
+                                                                                           class="btn btn-dark btn-buy"><i
+                                                    class="fa-search fa"></i><span
+                                                    class="btn-buy-label ml-2">View</span></a><a href="#"
+                                                                                                 data-toggle="modal"
+                                                                                                 data-target="#exampleModal"
+                                                                                                 class="btn btn-outline-dark btn-product-right"><i
+                                                    class="fa fa-expand-arrows-alt"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="py-2">
+                                <p class="text-muted text-sm mb-1">Shirts</p>
+                                <h3 class="h6 text-uppercase mb-1"><a href="detail.html" class="text-dark">Short top</a>
+                                </h3><span class="text-muted">$40.00</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /product-->
+                    <!-- product-->
+                    <div class="col-xl-4 col-sm-6">
+                        <div class="product">
+                            <div class="product-image">
+                                <div class="ribbon ribbon-danger">Sold out</div>
+                                <img src="https://d19m59y37dris4.cloudfront.net/sell/1-2-2/img/product/serrah-galos-494279-unsplash.jpg"
+                                     alt="product" class="img-fluid">
+                                <div class="product-hover-overlay"><a href="detail.html"
+                                                                      class="product-hover-overlay-link"></a>
+                                    <div class="product-hover-overlay-buttons"><a href="#"
+                                                                                  class="btn btn-outline-dark btn-product-left"><i
+                                                    class="fa fa-shopping-cart"></i></a><a href="detail.html"
+                                                                                           class="btn btn-dark btn-buy"><i
+                                                    class="fa-search fa"></i><span
+                                                    class="btn-buy-label ml-2">View</span></a><a href="#"
+                                                                                                 data-toggle="modal"
+                                                                                                 data-target="#exampleModal"
+                                                                                                 class="btn btn-outline-dark btn-product-right"><i
+                                                    class="fa fa-expand-arrows-alt"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="py-2">
+                                <p class="text-muted text-sm mb-1">Sweaters</p>
+                                <h3 class="h6 text-uppercase mb-1"><a href="detail.html" class="text-dark">Ethnic
+                                        Sweater</a></h3><span class="text-muted">$40.00</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /product-->
+                    <!-- product-->
+                    <div class="col-xl-4 col-sm-6">
+                        <div class="product">
+                            <div class="product-image"><img
+                                        src="https://d19m59y37dris4.cloudfront.net/sell/1-2-2/img/product/dmitriy-ilkevich-437760-unsplash.jpg"
+                                        alt="product" class="img-fluid">
+                                <div class="product-hover-overlay"><a href="detail.html"
+                                                                      class="product-hover-overlay-link"></a>
+                                    <div class="product-hover-overlay-buttons"><a href="#"
+                                                                                  class="btn btn-outline-dark btn-product-left"><i
+                                                    class="fa fa-shopping-cart"></i></a><a href="detail.html"
+                                                                                           class="btn btn-dark btn-buy"><i
+                                                    class="fa-search fa"></i><span
+                                                    class="btn-buy-label ml-2">View</span></a><a href="#"
+                                                                                                 data-toggle="modal"
+                                                                                                 data-target="#exampleModal"
+                                                                                                 class="btn btn-outline-dark btn-product-right"><i
+                                                    class="fa fa-expand-arrows-alt"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="py-2">
+                                <p class="text-muted text-sm mb-1">Coats</p>
+                                <h3 class="h6 text-uppercase mb-1"><a href="detail.html" class="text-dark">Beige</a>
+                                </h3><span class="text-muted">$40.00</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /product-->
+                    <!-- product-->
+                    <div class="col-xl-4 col-sm-6">
+                        <div class="product">
+                            <div class="product-image"><img
+                                        src="https://d19m59y37dris4.cloudfront.net/sell/1-2-2/img/product/ian-dooley-347968-unsplash.jpg"
+                                        alt="product" class="img-fluid">
+                                <div class="product-hover-overlay"><a href="detail.html"
+                                                                      class="product-hover-overlay-link"></a>
+                                    <div class="product-hover-overlay-buttons"><a href="#"
+                                                                                  class="btn btn-outline-dark btn-product-left"><i
+                                                    class="fa fa-shopping-cart"></i></a><a href="detail.html"
+                                                                                           class="btn btn-dark btn-buy"><i
+                                                    class="fa-search fa"></i><span
+                                                    class="btn-buy-label ml-2">View</span></a><a href="#"
+                                                                                                 data-toggle="modal"
+                                                                                                 data-target="#exampleModal"
+                                                                                                 class="btn btn-outline-dark btn-product-right"><i
+                                                    class="fa fa-expand-arrows-alt"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="py-2">
+                                <p class="text-muted text-sm mb-1">T-Shirts</p>
+                                <h3 class="h6 text-uppercase mb-1"><a href="detail.html" class="text-dark">Skull Tee</a>
+                                </h3><span class="text-muted">$40.00</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /product-->
+                    <!-- product-->
+                    <div class="col-xl-4 col-sm-6">
+                        <div class="product">
+                            <div class="product-image"><img
+                                        src="https://d19m59y37dris4.cloudfront.net/sell/1-2-2/img/product/alex-holyoake-571682-unsplash.jpg"
+                                        alt="product" class="img-fluid">
+                                <div class="product-hover-overlay"><a href="detail.html"
+                                                                      class="product-hover-overlay-link"></a>
+                                    <div class="product-hover-overlay-buttons"><a href="#"
+                                                                                  class="btn btn-outline-dark btn-product-left"><i
+                                                    class="fa fa-shopping-cart"></i></a><a href="detail.html"
+                                                                                           class="btn btn-dark btn-buy"><i
+                                                    class="fa-search fa"></i><span
+                                                    class="btn-buy-label ml-2">View</span></a><a href="#"
+                                                                                                 data-toggle="modal"
+                                                                                                 data-target="#exampleModal"
+                                                                                                 class="btn btn-outline-dark btn-product-right"><i
+                                                    class="fa fa-expand-arrows-alt"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="py-2">
+                                <p class="text-muted text-sm mb-1">Denim</p>
+                                <h3 class="h6 text-uppercase mb-1"><a href="detail.html" class="text-dark">Trucker
+                                        jacket</a></h3><span class="text-muted">$40.00</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /product-->
+                    <!-- product-->
+                    <div class="col-xl-4 col-sm-6">
+                        <div class="product">
+                            <div class="product-image"><img
+                                        src="https://d19m59y37dris4.cloudfront.net/sell/1-2-2/img/product/ao-456813-unsplash.jpg"
+                                        alt="product" class="img-fluid">
+                                <div class="product-hover-overlay"><a href="detail.html"
+                                                                      class="product-hover-overlay-link"></a>
+                                    <div class="product-hover-overlay-buttons"><a href="#"
+                                                                                  class="btn btn-outline-dark btn-product-left"><i
+                                                    class="fa fa-shopping-cart"></i></a><a href="detail.html"
+                                                                                           class="btn btn-dark btn-buy"><i
+                                                    class="fa-search fa"></i><span
+                                                    class="btn-buy-label ml-2">View</span></a><a href="#"
+                                                                                                 data-toggle="modal"
+                                                                                                 data-target="#exampleModal"
+                                                                                                 class="btn btn-outline-dark btn-product-right"><i
+                                                    class="fa fa-expand-arrows-alt"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="py-2">
+                                <p class="text-muted text-sm mb-1">Denim</p>
+                                <h3 class="h6 text-uppercase mb-1"><a href="detail.html" class="text-dark">Blouse</a>
+                                </h3><span class="text-muted">$40.00</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /product-->
+                    <!-- product-->
+                    <div class="col-xl-4 col-sm-6">
+                        <div class="product">
+                            <div class="product-image"><img
+                                        src="https://d19m59y37dris4.cloudfront.net/sell/1-2-2/img/product/kyle-loftus-592041-unsplash.jpg"
+                                        alt="product" class="img-fluid">
+                                <div class="product-hover-overlay"><a href="detail.html"
+                                                                      class="product-hover-overlay-link"></a>
+                                    <div class="product-hover-overlay-buttons"><a href="#"
+                                                                                  class="btn btn-outline-dark btn-product-left"><i
+                                                    class="fa fa-shopping-cart"></i></a><a href="detail.html"
+                                                                                           class="btn btn-dark btn-buy"><i
+                                                    class="fa-search fa"></i><span
+                                                    class="btn-buy-label ml-2">View</span></a><a href="#"
+                                                                                                 data-toggle="modal"
+                                                                                                 data-target="#exampleModal"
+                                                                                                 class="btn btn-outline-dark btn-product-right"><i
+                                                    class="fa fa-expand-arrows-alt"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="py-2">
+                                <p class="text-muted text-sm mb-1">Denim</p>
+                                <h3 class="h6 text-uppercase mb-1"><a href="detail.html" class="text-dark">Shirt</a>
+                                </h3><span class="text-muted">$40.00</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /product-->
+                </div>
+                <nav aria-label="page navigation" class="d-flex justify-content-center mb-5 mt-3">
+                    <ul class="pagination">
+                        <li class="page-item"><a href="#" aria-label="Previous" class="page-link"><span
+                                        aria-hidden="true">Prev</span><span class="sr-only">Previous</span></a></li>
+                        <li class="page-item active"><a href="#" class="page-link">1 </a></li>
+                        <li class="page-item"><a href="#" class="page-link">2 </a></li>
+                        <li class="page-item"><a href="#" class="page-link">3 </a></li>
+                        <li class="page-item"><a href="#" class="page-link">4 </a></li>
+                        <li class="page-item"><a href="#" class="page-link">5 </a></li>
+                        <li class="page-item"><a href="#" aria-label="Next" class="page-link"><span aria-hidden="true">Next</span><span
+                                        class="sr-only">Next     </span></a></li>
+                    </ul>
+                </nav>
+            </div>
+            <!-- / Grid End-->
+            <!-- Sidebar-->
+            <div class="sidebar col-xl-3 col-lg-4 order-lg-1">
+                <div class="sidebar-block px-3 px-lg-0 mr-lg-4"><a data-toggle="collapse" href="#categoriesMenu"
+                                                                   aria-expanded="false" aria-controls="categoriesMenu"
+                                                                   class="d-lg-none block-toggler">Product
+                        Categories</a>
+                    <div id="categoriesMenu" class="expand-lg collapse">
+                        <div class="nav nav-pills flex-column mt-4 mt-lg-0"><a href="#"
+                                                                               class="nav-link d-flex justify-content-between mb-2 "><span>Jackets</span><span
+                                        class="sidebar-badge"> 120</span></a>
+                            <div class="nav nav-pills flex-column ml-3"><a href="#" class="nav-link mb-2">Lorem
+                                    ipsum</a><a href="#" class="nav-link mb-2">Dolor</a><a href="#"
+                                                                                           class="nav-link mb-2">Sit
+                                    amet</a><a href="#" class="nav-link mb-2">Donec vitae</a>
+                            </div>
+                            <a href="#" class="nav-link d-flex justify-content-between mb-2 active"><span>Jeans &amp; chinos</span><span
+                                        class="sidebar-badge"> 55</span></a>
+                            <div class="nav nav-pills flex-column ml-3"><a href="#" class="nav-link mb-2">Lorem
+                                    ipsum</a><a href="#" class="nav-link mb-2">Dolor</a><a href="#"
+                                                                                           class="nav-link mb-2">Sit
+                                    amet</a><a href="#" class="nav-link mb-2">Donec vitae</a>
+                            </div>
+                            <a href="#"
+                               class="nav-link d-flex justify-content-between mb-2 "><span>Accessories</span><span
+                                        class="sidebar-badge"> 80</span></a>
+                            <div class="nav nav-pills flex-column ml-3"><a href="#" class="nav-link mb-2">Sit amet</a><a
+                                        href="#" class="nav-link mb-2">Donec vitae</a><a href="#" class="nav-link mb-2">Lorem
+                                    ipsum</a><a href="#" class="nav-link mb-2">Dolor</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <!-- /Sidebar end-->
         </div>
     </div>
     <script>
