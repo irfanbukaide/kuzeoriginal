@@ -62,6 +62,7 @@ include "layout/Menu.php";
     <script>
         var app = angular.module("kuze", []);
         app.controller("NewArrivalController", function ($http, $scope) {
+            $scope.new_arrival.im_img = "/assets/img/blank.jpg";
             $http.get("/api/item/knew_arrival").then(function (response) {
                 $scope.new_arrivals = response.data;
             });
