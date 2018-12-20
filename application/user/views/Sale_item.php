@@ -63,7 +63,7 @@ include "layout/Menu.php";
         var app = angular.module("kuze", []);
         app.controller("SaleItemController", function ($http, $scope) {
 
-            $http.get("/item/ksale_item").then(function (response) {
+            $http.get("/api/item/ksale_item").then(function (response) {
                 $scope.sale_items = response.data;
             });
 

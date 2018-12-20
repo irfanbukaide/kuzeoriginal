@@ -54,5 +54,11 @@ $route['api/bag/promo/(:any)'] = 'BagApiCtrl/bag_promo/$1';
 $route['api/home/new_arrival'] = 'HomeApiCtrl/new_arrival';
 $route['api/home/new_arrival'] = 'HomeApiCtrl/new_arrival';
 
+// api item
+$route['api/item/knew_arrival'] = 'ItemApiCtrl/knew_arrival';
+$route['api/item/kbest_seller'] = 'ItemApiCtrl/kbest_seller';
+$route['api/item/kbest_seller'] = 'ItemApiCtrl/kbest_seller';
+$route['api/item/ksale_item'] = 'ItemApiCtrl/ksale_item';
+
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
