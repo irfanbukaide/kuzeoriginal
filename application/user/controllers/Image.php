@@ -79,10 +79,10 @@ class Image extends CI_Controller
         echo json_encode($hasil);
     }
 
-    private function view_image($mime, $data)
-    {
-        return 'data:' . $mime . ';base64,' . (base64_encode($data));
-    }
+//    private function view_image($mime, $data)
+//    {
+//        return 'data:' . $mime . ';base64,' . (base64_encode($data));
+//    }
 
     public function billboard()
     {
@@ -93,16 +93,16 @@ class Image extends CI_Controller
                 $tmp = $this->billboard->get($i);
 
                 if ($tmp) {
-                    $image = new Imagick();
-                    $image->readimageblob($tmp->blb_data);
-                    $image->setImageCompressionQuality(80);
+//                    $image = new Imagick();
+//                    $image->readimageblob($tmp->blb_data);
+//                    $image->setImageCompressionQuality(80);
 
 
                     $hasil[$i]['id'] = $tmp->blb_id;
                     $hasil[$i]['alt'] = $tmp->blb_judul;
                     $hasil[$i]['url'] = $tmp->blb_url;
                     $hasil[$i]['ket'] = $tmp->blb_ket;
-                    $hasil[$i]['src'] = $this->view_image($tmp->blb_type, $image->getImageBlob());
+                    $hasil[$i]['src'] = $tmp->blb_url_img;
                 }
             }
 

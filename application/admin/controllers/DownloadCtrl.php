@@ -32,7 +32,7 @@ class DownloadCtrl extends MY_Controller
         $billboards = $this->billboard->get_all();
 
         foreach ($billboards as $billboard) {
-            $filename = 'upload/image/' . $billboard->blb_id . '.png';
+            $filename = 'upload/billboard_image/' . $billboard->blb_id . '.png';
             $filefisik = fopen($filename, "w");
             fwrite($filefisik, $billboard->blb_data);
             fclose($filefisik);
