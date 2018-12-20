@@ -16,13 +16,13 @@ include "layout/Menu.php";
             <div class="products-grid col-xl-9 col-lg-8 order-lg-2">
                 <header class="product-grid-header">
                     <div class="mr-3 mb-3">
-
                         Showing <strong>1-12 </strong>of <strong>158 </strong>products
                     </div>
-                    <div class="mr-3 mb-3"><span class="mr-2">Show</span><a href="#"
-                                                                            class="product-grid-header-show active">12 </a><a
-                                href="#" class="product-grid-header-show ">24 </a><a href="#"
-                                                                                     class="product-grid-header-show ">All </a>
+                    <div class="mr-3 mb-3">
+                        <span class="mr-2">Show</span>
+                        <a href="#" class="product-grid-header-show active">12</a>
+                        <a href="#" class="product-grid-header-show ">24</a>
+                        <a href="#" class="product-grid-header-show ">All</a>
                     </div>
                     <div class="mb-3 d-flex align-items-center"><span class="d-inline-block mr-1">Sort by</span>
                         <select class="custom-select w-auto border-0">
