@@ -55,14 +55,20 @@ class Billboard extends MY_Controller
     public function simpan()
     {
         // get user from database where guid
+        $billboard_id = $this->input->post('id');
         $billboard_data = file_get_contents($_FILES['foto']['tmp_name']);
         $billboard_type = getimageSize($_FILES['foto']['tmp_name']);
+        $filename = 'upload/billboard_image/' . $billboard_id . '.png';
+        $filefisik = fopen($filename, "w");
+        fwrite($filefisik, $billboard_data);
+        fclose($filefisik);
 
         $billboard_array = array(
-            'blb_id' => $this->input->post('id'),
+            'blb_id' => $billboard_id,
             'blb_judul' => $this->input->post('judul'),
             'blb_url' => $this->input->post('url'),
             'blb_type' => $billboard_type['mime'],
+            'blb_url_img' => $filename,
             'blb_data' => $billboard_data,
             'blb_ket' => $this->input->post('ket')
         );

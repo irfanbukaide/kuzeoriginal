@@ -124,13 +124,20 @@ class Upload extends MY_Controller
     public function simpan_img()
     {
 
-        $imgData = file_get_contents($_FILES['image']['tmp_name']);
-        $imageProperties = getimageSize($_FILES['image']['tmp_name']);
+        $item_image_id = $this->item_img->guid();
+        $item_image_data = file_get_contents($_FILES['image']['tmp_name']);
+        $item_image_property = getimageSize($_FILES['image']['tmp_name']);
+        $filename = 'upload/image/' . $item_image_id . '.png';
+        $filefisik = fopen($filename, "w");
+        fwrite($filefisik, $item_image_data);
+        fclose($filefisik);
+
         $default = 1;
         $data = array(
-            'ii_kode' => $this->item_img->guid(),
-            'ii_data' => $imgData,
-            'ii_type' => $imageProperties['mime'],
+            'ii_kode' => $item_image_id,
+            'ii_url' => $filename,
+            'ii_data' => $item_image_data,
+            'ii_type' => $item_image_property['mime'],
             'i_kode' => $this->input->post('i_kode')
         );
 
