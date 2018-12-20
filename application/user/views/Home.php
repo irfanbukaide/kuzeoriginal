@@ -32,22 +32,18 @@ include "layout/Menu.php";
         <img src="upload/Eyewear.jpg" alt="Eyewear">
     </div>
     <br>
-    <div ng-if="img1 && img2 && img3 && img4 && img5" class="container-fluid px-0 mb-3">
+    <div class="container-fluid px-0 mb-3">
         <div class="row c-padding-header">
             <div class="col-xl-4 col-lg-4 col-md-4 col-12">
                 <div class="row">
                     <div class="col-12">
                         <div class="content-wrapper">
-                            <img id="{{ img1['id'] }}"
-                                 ng-src="{{ img1['src'] }}"
-                                 alt="{{ img1['alt'] }}">
+                            <img ng-src="{{ img1 }}">
                         </div>
                     </div>
                     <div class="col-12">
                         <div class="content-wrapper">
-                            <img id="{{ img2['id'] }}"
-                                 ng-src="{{ img2['src'] }}"
-                                 alt="{{ img2['alt'] }}">
+                            <img ng-src="{{ img2 }}">
                         </div>
                     </div>
                 </div>
@@ -56,9 +52,7 @@ include "layout/Menu.php";
                 <div class="row">
                     <div class="col-12">
                         <div class="content-wrapper">
-                            <img id="{{ img3['id'] }}"
-                                 ng-src="{{ img3['src'] }}"
-                                 alt="{{ img3['alt'] }}">
+                            <img ng-src="{{ img3 }}">
                         </div>
                     </div>
                 </div>
@@ -67,16 +61,12 @@ include "layout/Menu.php";
                 <div class="row">
                     <div class="col-12">
                         <div class="content-wrapper">
-                            <img id="{{ img4['id'] }}"
-                                 ng-src="{{ img4['src'] }}"
-                                 alt="{{ img4['alt'] }}">
+                            <img ng-src="{{ img4 }}">
                         </div>
                     </div>
                     <div class="col-12">
                         <div class="content-wrapper">
-                            <img id="{{ img5['id'] }}"
-                                 ng-src="{{ img5['src'] }}"
-                                 alt="{{ img5['alt'] }}">
+                            <img ng-src="{{ img5 }}">
                         </div>
                     </div>
                 </div>
@@ -152,6 +142,12 @@ include "layout/Menu.php";
         var app = angular.module("kuze", ['angular-fotorama']);
         app.controller("homeController", function ($http, $scope) {
 
+            $scope.img1 = "/assets/img/blank.jpg";
+            $scope.img2 = "/assets/img/blank.jpg";
+            $scope.img3 = "/assets/img/blank.jpg";
+            $scope.img4 = "/assets/img/blank.jpg";
+            $scope.img5 = "/assets/img/blank.jpg";
+
 
             $http.get("/item/new_arrival").then(function (response) {
                 $scope.new_arrivals = response.data;
@@ -172,11 +168,11 @@ include "layout/Menu.php";
 
             $http.get("/image/billboard").then(
                 function (response) {
-                    $scope.img1 = response.data[1];
-                    $scope.img2 = response.data[2];
-                    $scope.img3 = response.data[3];
-                    $scope.img4 = response.data[4];
-                    $scope.img5 = response.data[5];
+                    $scope.img1 = response.data[1]['src'];
+                    $scope.img2 = response.data[2]['src'];
+                    $scope.img3 = response.data[3]['src'];
+                    $scope.img4 = response.data[4]['src'];
+                    $scope.img5 = response.data[5]['src'];
                 },
                 function (error) {
                     $scope.img1check = false;
