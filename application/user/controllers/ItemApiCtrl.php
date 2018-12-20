@@ -1,6 +1,6 @@
 <?php
 
-class Item extends CI_Controller
+class ItemApiCtrl extends CI_Controller
 {
     public function __construct()
     {
@@ -63,11 +63,6 @@ class Item extends CI_Controller
 
         return $hasil;
     }
-
-//    private function view_image($mime, $data)
-//    {
-//        return 'data:' . $mime . ';base64,' . (base64_encode($data));
-//    }
 
     public function new_arrival()
     {
@@ -217,18 +212,8 @@ class Item extends CI_Controller
         echo json_encode($hasil, JSON_UNESCAPED_UNICODE);
     }
 
-    public function test_image()
-    {
-        $data = $this->item_img
-            ->get();
-        if ($data != NULL) {
-            $image = new Imagick();
-            $image->readImageBlob($data->ii_data);
-            $image->setImageCompressionQuality(80);
-        }
-
-        header("Content-type: $data->ii_type");
-
-        echo $image->getImageBlob();
-    }
+//    private function view_image($mime, $data)
+//    {
+//        return 'data:' . $mime . ';base64,' . (base64_encode($data));
+//    }
 }

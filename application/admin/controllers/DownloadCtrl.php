@@ -18,8 +18,12 @@ class DownloadCtrl extends MY_Controller
         $item_images = $this->item_img->get_all();
 
         foreach ($item_images as $item_image) {
-            file_put_contents('/upload/image/' . $item_image->ii_kode . '.png', $item_image->ii_data);
-            echo 'Image ' . $item_image->ii_kode . ' downloaded.\n';
+            $filename = 'upload/image/' . $item_image->ii_kode . '.png';
+            $filefisik = fopen($filename, "w");
+            fwrite($filefisik, $item_image->ii_data);
+            fclose($filefisik);
+            $this->item_img->update(array('ii_kode' => $item_image->ii_kode, 'ii_url' => $filename), 'ii_kode');
+            echo $filename . ' downloaded.<br>';
         }
     }
 
