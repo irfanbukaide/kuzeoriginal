@@ -25,11 +25,11 @@ include "layout/Menu.php";
     <!--        </div>-->
 
     <div class="fotorama" data-autoplay="true">
-        <img src="upload/FINAL.jpg" alt="Final">
-        <img src="upload/Belt.jpg" alt="Belt">
-        <img src="upload/Bracelet.jpg" alt="Bracelet">
-        <img src="upload/Clutch.jpg" alt="Clutch">
-        <img src="upload/Eyewear.jpg" alt="Eyewear">
+        <img src="/upload/FINAL.jpg" alt="Final">
+        <img src="/upload/Belt.jpg" alt="Belt">
+        <img src="/upload/Bracelet.jpg" alt="Bracelet">
+        <img src="/upload/Clutch.jpg" alt="Clutch">
+        <img src="/upload/Eyewear.jpg" alt="Eyewear">
     </div>
     <br>
     <div class="container-fluid px-0 mb-3">

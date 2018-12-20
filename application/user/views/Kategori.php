@@ -41,18 +41,20 @@ include "layout/Menu.php";
                                 <div class="ribbon ribbon-info">Fresh</div>
                                 <img src="https://d19m59y37dris4.cloudfront.net/sell/1-2-2/img/product/serrah-galos-494312-unsplash.jpg"
                                      alt="product" class="img-fluid">
-                                <div class="product-hover-overlay"><a href="detail.html"
-                                                                      class="product-hover-overlay-link"></a>
-                                    <div class="product-hover-overlay-buttons"><a href="#"
-                                                                                  class="btn btn-outline-dark btn-product-left"><i
-                                                    class="fa fa-shopping-cart"></i></a><a href="detail.html"
-                                                                                           class="btn btn-dark btn-buy"><i
-                                                    class="fa-search fa"></i><span
-                                                    class="btn-buy-label ml-2">View</span></a><a href="#"
-                                                                                                 data-toggle="modal"
-                                                                                                 data-target="#exampleModal"
-                                                                                                 class="btn btn-outline-dark btn-product-right"><i
-                                                    class="fa fa-expand-arrows-alt"></i></a>
+                                <div class="product-hover-overlay">
+                                    <a href="detail.html" class="product-hover-overlay-link"></a>
+                                    <div class="product-hover-overlay-buttons">
+                                        <a href="#" class="btn btn-outline-dark btn-product-left">
+                                            <i class="fa fa-shopping-cart"></i>
+                                        </a>
+                                        <a href="detail.html" class="btn btn-dark btn-buy">
+                                            <i class="fa-search fa"></i>
+                                            <span class="btn-buy-label ml-2">View</span>
+                                        </a>
+                                        <a href="#" data-toggle="modal" data-target="#exampleModal"
+                                           class="btn btn-outline-dark btn-product-right">
+                                            <i class="fa fa-expand-arrows-alt"></i>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
