@@ -28,7 +28,7 @@ include "layout/Menu.php";
 
                         <a href="<?= site_url(); ?>best_seller/item/{{best_seller.i_url}}/detil">
                             <img id="{{best_seller.i_kode}}"
-                                 ng-src="{{ best_seller.i_img }}"
+                                 ng-src="{{ item_image = best_seller.i_img }}"
                                  class="img-fluid mx-auto d-block">
 
                             <div class="card-body text-center">
@@ -64,7 +64,7 @@ include "layout/Menu.php";
     <script>
         var app = angular.module("kuze", []);
         app.controller("BestSellerController", function ($http, $scope) {
-
+            $scope.item_image = "/assets/img/blank.jpg";
             $http.get("/api/item/kbest_seller").then(function (response) {
                 $scope.best_sellers = response.data;
             });

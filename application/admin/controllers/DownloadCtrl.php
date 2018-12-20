@@ -13,7 +13,7 @@ class DownloadCtrl extends MY_Controller
         }
     }
 
-    public function image()
+    public function image_save()
     {
         $item_images = $this->item_img->get_all();
 
@@ -23,6 +23,20 @@ class DownloadCtrl extends MY_Controller
             fwrite($filefisik, $item_image->ii_data);
             fclose($filefisik);
             $this->item_img->update(array('ii_kode' => $item_image->ii_kode, 'ii_url' => $filename), 'ii_kode');
+            echo $filename . ' downloaded.<br>';
+        }
+    }
+
+    public function billboard_save()
+    {
+        $billboards = $this->billboard->get_all();
+
+        foreach ($billboards as $billboard) {
+            $filename = 'upload/image/' . $billboard->blb_id . '.png';
+            $filefisik = fopen($filename, "w");
+            fwrite($filefisik, $billboard->blb_data);
+            fclose($filefisik);
+            $this->item_img->update(array('blb_id' => $billboard->blb_id, 'blb_url_img' => $filename), 'blb_id');
             echo $filename . ' downloaded.<br>';
         }
     }

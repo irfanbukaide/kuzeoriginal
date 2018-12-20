@@ -27,7 +27,7 @@ include "layout/Menu.php";
 
                         <a href="<?= site_url(); ?>sale_item/item/{{sale_item.i_url}}/detil">
                             <img id="{{sale_item.i_kode}}"
-                                 ng-src="{{ sale_item.i_img }}"
+                                 ng-src="{{ item_image = sale_item.i_img }}"
                                  class="img-fluid mx-auto d-block">
 
                             <div class="card-body text-center">
@@ -62,7 +62,7 @@ include "layout/Menu.php";
     <script>
         var app = angular.module("kuze", []);
         app.controller("SaleItemController", function ($http, $scope) {
-
+            $scope.item_image = "/assets/img/blank.jpg";
             $http.get("/api/item/ksale_item").then(function (response) {
                 $scope.sale_items = response.data;
             });

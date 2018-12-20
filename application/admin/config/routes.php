@@ -57,6 +57,7 @@ $route['order/konfirmasi/(:any)/detil'] = 'order/proses_detil/$1';
 
 
 // Download Controller
-$route['download/image'] = 'DownloadCtrl/image';
+$route['download/image'] = 'DownloadCtrl/image_save';
+$route['download/billboard'] = 'DownloadCtrl/billboard_save';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
