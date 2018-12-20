@@ -11,7 +11,7 @@ include "layout/Menu.php";
                 <i class="fa fa-arrow-right"></i>
                 <a class="breadcrumb-item" href="<?= site_url('cart'); ?>">Keranjang</a>
                 <i class="fa fa-arrow-right"></i>
-                <a class="breadcrumb-item" href="<?= site_url('checkout/alamat_pengiriman'); ?>">Alamat Pengiriman</a>
+                <a class="breadcrumb-item" href="<?= site_url('checkout/shipping_address'); ?>">Alamat Pengiriman</a>
                 <i class="fa fa-arrow-right"></i>
                 <a class="breadcrumb-item" href="<?= site_url('checkout/kirim_bayar'); ?>">Metode Pengiriman</a>
             </nav>

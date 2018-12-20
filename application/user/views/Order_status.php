@@ -153,7 +153,7 @@ include "layout/Menu.php";
                                             </a>
                                             <?php if ($order->orders_status == 0): ?>
                                                 <a class="btn c-login-btn c-edit"
-                                                   href="<?= site_url('checkout/' . $order->orders_noid . '/alamat_pengiriman'); ?>">
+                                                   href="<?= site_url('checkout/' . $order->orders_noid . '/shipping_address'); ?>">
                                                     <i class="fas fa-sync mr-2"></i>Process
                                                 </a>
                                             <?php elseif ($order->orders_status == 1): ?>

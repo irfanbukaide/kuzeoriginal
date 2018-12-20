@@ -13,7 +13,7 @@ include "layout/Menu.php";
                 <a class="breadcrumb-item " href="<?= site_url('bag'); ?>">Bag</a>
                 <i class="fa fa-arrow-right"></i>
                 <a class="breadcrumb-item "
-                   href="<?= site_url('checkout/' . $this->uri->segment(2) . '/alamat_pengiriman'); ?>">Address</a>
+                   href="<?= site_url('checkout/' . $this->uri->segment(2) . '/shipping_address'); ?>">Address</a>
                 <i class="fa fa-arrow-right"></i>
                 <a class="breadcrumb-item "
                    href="<?= site_url('checkout/' . $this->uri->segment(2) . '/ongkir_transfer'); ?>">Payment & Shipping

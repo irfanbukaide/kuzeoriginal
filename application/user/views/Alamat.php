@@ -13,7 +13,7 @@ include "layout/Menu.php";
                 <a class="breadcrumb-item " href="<?= site_url('bag'); ?>">Bag</a>
                 <i class="fa fa-arrow-right"></i>
                 <a class="breadcrumb-item active-bread"
-                   href="<?= site_url('checkout/' . $this->uri->segment(2) . '/alamat_pengiriman'); ?>">Address</a>
+                   href="<?= site_url('checkout/' . $this->uri->segment(2) . '/shipping_address'); ?>">Address</a>
             </nav>
         </div>
     </div>
@@ -49,7 +49,7 @@ include "layout/Menu.php";
             <div class="row">
                 <div class="col-lg-9 col-md-9 c-margin-auto">
                     <h5 class="mb-4">ADDRESS DETAIL</h5>
-                    <form action="alamat_pengiriman/simpan" method="post" id="form_alamat">
+                    <form action="shipping_address/simpan" method="post" id="form_alamat">
                         <input type="hidden" name="ecommerce_eazy" value="<?= $this->security->get_csrf_hash(); ?>">
                         <input type="hidden" name="alamat_simpan" id="alamat_simpan">
                         <div class="row form-group">
