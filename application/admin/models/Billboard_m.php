@@ -12,7 +12,7 @@ class Billboard_m extends MY_Model
     {
         $this->table = 'billboard_img';
         $this->primary_key = 'blb_id';
-        $this->protected = array('blb_id', 'created_at', 'update_at', 'deleted_at');
+        $this->protected = array('created_at', 'update_at', 'deleted_at');
         $this->timestamps = TRUE;
         $this->soft_deletes = FALSE;
         parent::__construct();

@@ -36,7 +36,7 @@ class DownloadCtrl extends MY_Controller
             $filefisik = fopen($filename, "w");
             fwrite($filefisik, $billboard->blb_data);
             fclose($filefisik);
-            $this->item_img->update(array('blb_id' => $billboard->blb_id, 'blb_url_img' => $filename), 'blb_id');
+            $this->billboard->update(array('blb_id' => $billboard->blb_id, 'blb_url_img' => $filename), 'blb_id');
             echo $filename . ' downloaded.<br>';
         }
     }
