@@ -62,6 +62,8 @@ $route['api/item/ksale_item'] = 'ItemApiCtrl/ksale_item';
 
 // api category
 $route['api/category/menu'] = 'CategoryApiCtrl/json_menu';
+$route['api/category/item_all'] = 'CategoryApiCtrl/json_item_all';
+$route['api/category/item_image'] = 'CategoryApiCtrl/json_item_image';
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

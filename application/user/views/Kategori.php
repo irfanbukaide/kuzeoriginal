@@ -10,7 +10,7 @@ include "layout/Menu.php";
             </div>
         </div>
     </section>
-    <div class="container" ng-app="kuze" ng-controller="kategoriController">
+    <div class="container" ng-app="kuze" ng-controller="categoryController">
         <div class="row">
             <!-- Grid -->
             <div class="products-grid col-xl-9 col-lg-8 order-lg-2">
@@ -405,33 +405,18 @@ include "layout/Menu.php";
             <!-- / Grid End-->
             <!-- Sidebar-->
             <div class="sidebar col-xl-3 col-lg-4 order-lg-1">
-                <div class="sidebar-block px-3 px-lg-0 mr-lg-4"><a data-toggle="collapse" href="#categoriesMenu"
-                                                                   aria-expanded="false" aria-controls="categoriesMenu"
-                                                                   class="d-lg-none block-toggler">Product
-                        Categories</a>
+                <div class="sidebar-block px-3 px-lg-0 mr-lg-4">
+                    <a data-toggle="collapse" href="#categoriesMenu" aria-expanded="false"
+                       aria-controls="categoriesMenu" class="d-lg-none block-toggler">Product
+                        Categories
+                    </a>
                     <div id="categoriesMenu" class="expand-lg collapse">
-                        <div class="nav nav-pills flex-column mt-4 mt-lg-0"><a href="#"
-                                                                               class="nav-link d-flex justify-content-between mb-2 "><span>Jackets</span><span
-                                        class="sidebar-badge"> 120</span></a>
-                            <div class="nav nav-pills flex-column ml-3"><a href="#" class="nav-link mb-2">Lorem
-                                    ipsum</a><a href="#" class="nav-link mb-2">Dolor</a><a href="#"
-                                                                                           class="nav-link mb-2">Sit
-                                    amet</a><a href="#" class="nav-link mb-2">Donec vitae</a>
-                            </div>
-                            <a href="#" class="nav-link d-flex justify-content-between mb-2 active"><span>Jeans &amp; chinos</span><span
-                                        class="sidebar-badge"> 55</span></a>
-                            <div class="nav nav-pills flex-column ml-3"><a href="#" class="nav-link mb-2">Lorem
-                                    ipsum</a><a href="#" class="nav-link mb-2">Dolor</a><a href="#"
-                                                                                           class="nav-link mb-2">Sit
-                                    amet</a><a href="#" class="nav-link mb-2">Donec vitae</a>
-                            </div>
-                            <a href="#"
-                               class="nav-link d-flex justify-content-between mb-2 "><span>Accessories</span><span
-                                        class="sidebar-badge"> 80</span></a>
-                            <div class="nav nav-pills flex-column ml-3"><a href="#" class="nav-link mb-2">Sit amet</a><a
-                                        href="#" class="nav-link mb-2">Donec vitae</a><a href="#" class="nav-link mb-2">Lorem
-                                    ipsum</a><a href="#" class="nav-link mb-2">Dolor</a>
-                            </div>
+                        <div class="nav nav-pills flex-column mt-4 mt-lg-0">
+                            <a ng-repeat="category in categories" href="#"
+                               class="nav-link d-flex justify-content-between mb-2 ">
+                                <span ng-bind="category.k_nama"></span>
+                                <span class="sidebar-badge" ng-bind="category.counter"></span>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -445,6 +430,53 @@ include "layout/Menu.php";
     <script>
         $(function () {
             $('img').Lazy();
+        });
+    </script>
+    <script src="<?= base_url('node_modules/angular/angular.min.js'); ?>"></script>
+    <script>
+        var app = angular.module("kuze", []);
+        app.controller("categoryController", function ($http, $scope) {
+
+            $http.get("/api/category/menu").then(function (response) {
+                $scope.categories = response.data;
+            });
+
+
+        });
+
+        app.config(function ($httpProvider) {
+            $httpProvider.interceptors.push(function ($q) {
+                return {
+                    'request': function (config) {
+                        $('.spinner').show();
+                        return config;
+                    },
+
+                    'response': function (response) {
+                        $('.spinner').hide();
+                        return response;
+                    }
+                };
+            });
+        });
+
+        app.run(function ($rootScope) {
+            if ($rootScope.$last) {
+                $('.spinner').hide();
+            } else {
+                $('.spinner').show();
+            }
+
+        });
+
+        app.filter('rupiah', function () {
+            return function (val) {
+                while (/(\d+)(\d{3})/.test(val.toString())) {
+                    val = val.toString().replace(/(\d+)(\d{3})/, '$1' + '.' + '$2');
+                }
+                var val = 'IDR ' + val;
+                return val;
+            };
         });
     </script>
 
