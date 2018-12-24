@@ -413,7 +413,7 @@ include "layout/Menu.php";
                     <div id="categoriesMenu" class="expand-lg collapse">
                         <div class="nav nav-pills flex-column mt-4 mt-lg-0">
                             <a ng-repeat="category in categories" href="#"
-                               class="nav-link d-flex justify-content-between mb-2 ">
+                               class="nav-link d-flex justify-content-between mb-2 " ng-if="category.counter">
                                 <span ng-bind="category.k_nama"></span>
                                 <span class="sidebar-badge" ng-bind="category.counter"></span>
                             </a>
@@ -424,9 +424,6 @@ include "layout/Menu.php";
             <!-- /Sidebar end-->
         </div>
     </div>
-    <script>
-        $('[id="title"]').ellipsis();
-    </script>
     <script>
         $(function () {
             $('img').Lazy();
@@ -439,6 +436,10 @@ include "layout/Menu.php";
 
             $http.get("/api/category/menu").then(function (response) {
                 $scope.categories = response.data;
+            });
+
+            $http.get("/api/category/item_all").then(function (response) {
+                $scope.items = response.data;
             });
 
 

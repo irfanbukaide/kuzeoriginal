@@ -16,6 +16,29 @@ class CategoryApiCtrl extends CI_Controller
         parent::__construct();
     }
 
+    private function get_image($i_kode)
+    {
+        $this->load->model('Item_img_m', 'item_img');
+
+        $data = $this->item_img
+            ->where(array('i_kode' => $i_kode))->order_by('created_at', 'DESC')
+            ->get();
+
+        if ($data != NULL) {
+//            $image = new Imagick();
+//            $image->readimageblob($data->ii_data);
+//            $image->setImageCompressionQuality(80);
+//            $hasil = $this->view_image($data->ii_type, $image->getImageBlob());
+
+            $hasil = $data->ii_url;
+        } else {
+            $im = base_url('assets/img/noimage.jpg');
+            $hasil = $im;
+        }
+
+        return $hasil;
+    }
+
     public function json_menu()
     {
         // load model
@@ -39,14 +62,13 @@ class CategoryApiCtrl extends CI_Controller
     {
         // load model
         $this->load->model('Item_m', 'item');
-        $this->load->model('Item_img_m', 'item_img');
 
         $items = $this->item->fields('i_kode,i_url,i_nama,i_hrg,i_sale,i_new,i_best')->get_all();
         $items = function () use ($items) {
             foreach ($items as $item) {
                 $id = $item->i_kode;
-//                $image = $this->item_img->where('i_kode',$id)->get();
-//                $item->img = $image;
+                $image = $this->get_image($id);
+                $item->i_img = $image;
             }
 
             return (array)$items;
@@ -56,7 +78,20 @@ class CategoryApiCtrl extends CI_Controller
 
     public function json_item_limit($start, $end)
     {
+        // load model
+        $this->load->model('Item_m', 'item');
 
+        $items = $this->item->fields('i_kode,i_url,i_nama,i_hrg,i_sale,i_new,i_best')->limit($start, $end)->get_all();
+        $items = function () use ($items) {
+            foreach ($items as $item) {
+                $id = $item->i_kode;
+                $image = $this->get_image($id);
+                $item->i_img = $image;
+            }
+
+            return (array)$items;
+        };
+        echo json_encode($items(), JSON_UNESCAPED_UNICODE);
     }
 
     public function json_item_image()
