@@ -3,12 +3,9 @@ include "layout/Header.php";
 include "layout/Menu.php";
 ?>
 
-    <hr class="c-hr-reset">
-
-
     <!-- ======= Breadcrumb ======= -->
     <div class="wrapper-bredcrumb">
-        <div class="container-flu c-padding-header">
+        <div class="container c-padding-header">
             <div class="c-breadcrumb">
                 <nav class="c-nav-breadcrumb">
                     <a class="breadcrumb-item" href="<?= site_url('/'); ?>">Home</a>
@@ -24,7 +21,7 @@ include "layout/Menu.php";
 
 
     <!-- ======= Detail Site ======= -->
-    <div class="container-flu c-padding-header c-margin-100">
+    <div class="container c-padding-header c-margin-100">
         <div class="row justify-content-center">
             <?php if (isset($item) && $item != NULL): ?>
 
@@ -37,9 +34,9 @@ include "layout/Menu.php";
                      data-allowfullscreen="native"
                      data-width="600"
                      data-height="400">
-                    <?php if ($item_img_all($item->i_kode) != NULL): ?>
-                        <?php foreach ($item_img_all($item->i_kode) as $img): ?>
-                            <img src="data:<?= $img->ii_type . ';base64,' . (base64_encode($img->ii_data)); ?>"
+                    <?php if (isset($images)): ?>
+                        <?php foreach ($images as $image): ?>
+                            <img src="<?= $image->ii_url; ?>"
                                  class="card-img-top">
                         <?php endforeach; ?>
                     <?php else: ?>

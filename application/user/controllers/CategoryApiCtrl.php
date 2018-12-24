@@ -84,6 +84,7 @@ class CategoryApiCtrl extends CI_Controller
                 $category = $this->get_category($id);
                 $item->i_img = $image;
                 $item->i_category = $category;
+                $item->i_url = site_url('category/all/item/' . $item->i_url);
             }
 
             return (array)$items;
@@ -103,8 +104,11 @@ class CategoryApiCtrl extends CI_Controller
         if ($category->item_kategori) {
             foreach ($category->item_kategori as $ik) {
                 $item = $this->item->as_array()->where('i_kode', $ik->i_kode)->get();
-                $item['i_img'] = '/' . $this->get_image($item['i_kode']);
-                $item['i_category'] = $this->get_category($item['i_kode']);
+                $category = $this->get_category($item['i_kode']);
+                $image = $this->get_image($item['i_kode']);
+                $item['i_img'] = '/' . $image;
+                $item['i_category'] = $category;
+                $item['i_url'] = site_url('category/' . $category->k_url . '/item/' . $item['i_url']);
                 array_push($items, $item);
             }
         }

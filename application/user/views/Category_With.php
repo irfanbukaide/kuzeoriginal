@@ -44,9 +44,9 @@ include "layout/Menu.php";
                                 <img src="{{ image = item.i_img }}"
                                      alt="product" class="img-fluid">
                                 <div class="product-hover-overlay">
-                                    <a href="detail.html" class="product-hover-overlay-link"></a>
+                                    <a href="{{ item.i_url }}" class="product-hover-overlay-link"></a>
                                     <div class="product-hover-overlay-buttons">
-                                        <a href="detail.html" class="btn btn-dark btn-buy">
+                                        <a href="{{ item.i_url }}" class="btn btn-dark btn-buy">
                                             <i class="fa-search fa"></i>
                                             <span class="btn-buy-label ml-2">View</span>
                                         </a>
