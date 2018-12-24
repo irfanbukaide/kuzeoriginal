@@ -25,7 +25,7 @@ $route['sale_item/item/(:any)'] = 'CategoryCtrl/get_item_saleitem/$1';
 $route['sale_item/item/(:any)/detil'] = 'CategoryCtrl/get_item_saleitem/$1';
 $route['sale_item/item/(:any)/add_to_bag'] = 'bag/add/$1';
 $route['category'] = 'CategoryCtrl';
-$route['category/(:any)'] = 'CategoryCtrl/get_item/$1';
+$route['category/(:any)'] = 'CategoryCtrl/with/$1';
 $route['category/all/item/(:any)'] = 'CategoryCtrl/get_item_detil_all/$1';
 $route['category/all/item/(:any)/detil'] = 'CategoryCtrl/get_item_detil_all/$1';
 $route['category/(:any)/item/(:any)'] = 'CategoryCtrl/get_item_detil/$1/$2';
@@ -63,6 +63,7 @@ $route['api/item/ksale_item'] = 'ItemApiCtrl/ksale_item';
 // api category
 $route['api/category/menu'] = 'CategoryApiCtrl/json_menu';
 $route['api/category/item_all'] = 'CategoryApiCtrl/json_item_all';
+$route['api/category/item_category/(:any)'] = 'CategoryApiCtrl/json_item_category/$1';
 $route['api/category/item_image'] = 'CategoryApiCtrl/json_item_image';
 
 $route['404_override'] = '';

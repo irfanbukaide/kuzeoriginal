@@ -87,7 +87,7 @@ include "layout/Menu.php";
                     </a>
                     <div id="categoriesMenu" class="expand-lg collapse">
                         <div class="nav nav-pills flex-column mt-4 mt-lg-0">
-                            <a ng-repeat="category in categories" href="#"
+                            <a ng-repeat="category in categories" href="{{ category.k_url }}"
                                class="nav-link d-flex justify-content-between mb-2 " ng-if="category.counter">
                                 <span ng-bind="category.k_nama"></span>
                                 <span class="sidebar-badge" ng-bind="category.counter"></span>
@@ -113,7 +113,7 @@ include "layout/Menu.php";
                 $scope.categories = response.data;
             });
 
-            $http.get("/api/category/item_all").then(function (response) {
+            $http.get("/api/category/item_category/<?= $k_url ?>").then(function (response) {
                 $scope.items = response.data;
             });
 

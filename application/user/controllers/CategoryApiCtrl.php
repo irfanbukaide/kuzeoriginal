@@ -39,6 +39,18 @@ class CategoryApiCtrl extends CI_Controller
         return $hasil;
     }
 
+    private function get_category($i_kode)
+    {
+        $this->load->model('Kategori_m', 'kategori');
+        $this->load->model('Item_kategori_m', 'item_kategori');
+
+        $category = $this->kategori->with_item_kategori('where:i_kode=\'' . $i_kode . '\'')->get();
+
+        return $category;
+
+    }
+
+
     public function json_menu()
     {
         // load model
@@ -50,6 +62,7 @@ class CategoryApiCtrl extends CI_Controller
                 $id = $category->k_kode;
                 $counter = $this->item_kategori->where('k_kode', $id)->count_rows();
                 $category->counter = $counter;
+                $category->k_url = site_url('category/') . $category->k_url;
             }
 
             return (array)$categories;
@@ -68,12 +81,34 @@ class CategoryApiCtrl extends CI_Controller
             foreach ($items as $item) {
                 $id = $item->i_kode;
                 $image = $this->get_image($id);
+                $category = $this->get_category($id);
                 $item->i_img = $image;
+                $item->i_category = $category;
             }
 
             return (array)$items;
         };
         echo json_encode($items(), JSON_UNESCAPED_UNICODE);
+    }
+
+    public function json_item_category($k_url)
+    {
+        // load model
+        $this->load->model('Item_m', 'item');
+        $this->load->model('Kategori_m', 'kategori');
+
+
+        $items = array();
+        $category = $this->kategori->where('k_url', $k_url)->with_item_kategori()->get();
+        if ($category->item_kategori) {
+            foreach ($category->item_kategori as $ik) {
+                $item = $this->item->as_array()->where('i_kode', $ik->i_kode)->get();
+                $item['i_img'] = '/' . $this->get_image($item['i_kode']);
+                $item['i_category'] = $this->get_category($item['i_kode']);
+                array_push($items, $item);
+            }
+        }
+        echo json_encode($items, JSON_UNESCAPED_UNICODE);
     }
 
     public function json_item_limit($start, $end)

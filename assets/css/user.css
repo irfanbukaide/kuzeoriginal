@@ -13255,7 +13255,7 @@ a.accordion-link:focus {
 
 .text-uppercase {
     text-transform: uppercase;
-    letter-spacing: 0.1em
+    /*letter-spacing: 0.1em*/
 }
 
 .text-sm {

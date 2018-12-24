@@ -12,37 +12,13 @@ class CategoryCtrl extends MY_Controller
     public function index()
     {
         $this->data->items = $this->item->get_all();
-        $this->data->breadcumburl = site_url('kategori');
-        $this->data->breadcumb = 'Category';
-        $this->load->view('Kategori', $this->data);
+        $this->load->view('Category_All', $this->data);
     }
 
-    public function get_item_all()
+    public function with($k_url)
     {
-        $this->data->items = $this->item->get_all();
-        $this->data->breadcumburl = site_url('kategori');
-        $this->data->breadcumb = 'Kategori';
-        $this->load->view('Kategori', $this->data);
-    }
-
-    public function get_item($k_url)
-    {
-        $item_kategori = function () use ($k_url) {
-            $kategori_kode = $this->kategori->where('k_url', $k_url)->get()->k_kode;
-            $hasil = $this->item_kategori->with_item()->where('k_kode', $kategori_kode)->get_all();
-
-            if ($hasil) {
-                return $hasil;
-            } else {
-                return $hasil = NULL;
-            }
-        };
         $this->data->k_url = $k_url;
-        $this->data->item_kategori = $item_kategori();
-        $this->data->breadcumburl = site_url('category/' . $k_url);
-        $this->data->breadcumb = $this->kategori->where('k_url', $k_url)->get()->k_nama;
-        $this->load->view('Kategori', $this->data);
-//        print_r($item_kategori());
+        $this->load->view('Category_With', $this->data);
     }
 
     public function get_item_detil($k_url, $i_url)
