@@ -107,11 +107,6 @@
     </div>
 </footer>
 <script>
-    $(document).ready(function () {
-        setTimeout(function () {
-            $('div.spinner').hide();
-        }, 3000);
-    });
 
     $(function () {
         $('#myDropdown').on('show.bs.dropdown', function () {

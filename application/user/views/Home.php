@@ -142,11 +142,11 @@ include "layout/Menu.php";
         var app = angular.module("kuze", ['angular-fotorama']);
         app.controller("homeController", function ($http, $scope) {
 
-            $scope.img1 = "/assets/img/blank.jpg";
-            $scope.img2 = "/assets/img/blank.jpg";
-            $scope.img3 = "/assets/img/blank.jpg";
-            $scope.img4 = "/assets/img/blank.jpg";
-            $scope.img5 = "/assets/img/blank.jpg";
+            $scope.img1 = "/assets/img/noimage.png";
+            $scope.img2 = "/assets/img/noimage.png";
+            $scope.img3 = "/assets/img/noimage.png";
+            $scope.img4 = "/assets/img/noimage.png";
+            $scope.img5 = "/assets/img/noimage.png";
 
 
             $http.get("/api/item/new_arrival").then(function (response) {

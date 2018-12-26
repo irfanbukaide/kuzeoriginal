@@ -36,7 +36,7 @@ include "layout/Menu.php";
                 <div class="row">
                     <!-- product-->
                     <div ng-repeat="item in items" class="col-xl-4 col-sm-4">
-                        <div class="product">
+                        <div class="product" ng-bind="item">
                             <div class="product-image">
                                 <div class="ribbon ribbon-info" ng-if="item.i_new == 1">New Arrival</div>
                                 <div class="ribbon ribbon-primary" ng-if="item.i_best == 1">Best Seller</div>
@@ -109,6 +109,7 @@ include "layout/Menu.php";
         var app = angular.module("kuze", []);
         app.controller("categoryController", function ($http, $scope) {
 
+            $scope.image = "/assets/img/noimage.png";
             $http.get("/api/category/menu").then(function (response) {
                 $scope.categories = response.data;
             });

@@ -42,7 +42,7 @@ include "layout/Menu.php";
                             <div class="ribbon ribbon-info" ng-if="item.i_new == 1">New Arrival</div>
                             <div class="ribbon ribbon-primary" ng-if="item.i_best == 1">Best Seller</div>
                             <div class="ribbon ribbon-danger" ng-if="item.i_sale == 1">Sale Item</div>
-                            <img src="{{ item_image = item.i_img }}"
+                            <img src="{{ image = item.i_img }}"
                                  alt="product" class="img-fluid">
                             <div class="product-hover-overlay">
                                 <a href="{{ item.i_url }}" class="product-hover-overlay-link"></a>
@@ -94,7 +94,7 @@ include "layout/Menu.php";
     <script>
         var app = angular.module("kuze", []);
         app.controller("SaleItemController", function ($http, $scope) {
-            $scope.item_image = "/assets/img/blank.jpg";
+            $scope.image = "/assets/img/noimage.png";
             $http.get("/api/item/ksale_item").then(function (response) {
                 $scope.sale_items = response.data;
             });

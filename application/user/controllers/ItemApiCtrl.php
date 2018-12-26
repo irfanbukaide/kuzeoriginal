@@ -11,6 +11,44 @@ class ItemApiCtrl extends CI_Controller
     }
 
 
+    private function get_image($i_kode)
+    {
+        $data = $this->item_img
+            ->where(array('i_kode' => $i_kode))->order_by('created_at', 'DESC')
+            ->get();
+
+        if ($data != NULL) {
+//            $image = new Imagick();
+//            $image->readimageblob($data->ii_data);
+//            $image->setImageCompressionQuality(80);
+//            $hasil = $this->view_image($data->ii_type, $image->getImageBlob());
+
+            $hasil = $data->ii_url;
+        } else {
+            $im = base_url('assets/img/noimage.jpg');
+            $hasil = $im;
+        }
+
+        return $hasil;
+    }
+
+    private function get_category($i_kode)
+    {
+        $this->load->model('Kategori_m', 'kategori');
+        $this->load->model('Item_kategori_m', 'item_kategori');
+
+        $categories = array();
+        $item_categories = $this->item_kategori->where('i_kode', $i_kode)->with_kategori()->get_all();
+        foreach ($item_categories as $item_category) {
+            array_push($categories, $item_category->kategori->k_nama);
+        }
+
+
+        return implode(', ', $categories);
+
+    }
+
+
     public function best_seller()
     {
         ob_start('ob_gzhandler');
@@ -43,26 +81,7 @@ class ItemApiCtrl extends CI_Controller
 
     }
 
-    private function get_image($i_kode)
-    {
-        $data = $this->item_img
-            ->where(array('i_kode' => $i_kode))->order_by('created_at', 'DESC')
-            ->get();
 
-        if ($data != NULL) {
-//            $image = new Imagick();
-//            $image->readimageblob($data->ii_data);
-//            $image->setImageCompressionQuality(80);
-//            $hasil = $this->view_image($data->ii_type, $image->getImageBlob());
-
-            $hasil = $data->ii_url;
-        } else {
-            $im = base_url('assets/img/noimage.jpg');
-            $hasil = $im;
-        }
-
-        return $hasil;
-    }
 
     public function new_arrival()
     {
@@ -142,6 +161,7 @@ class ItemApiCtrl extends CI_Controller
                     $hasil[$k]['i_best'] = $v['i_best'];
                     $hasil[$k]['i_nama'] = $v['i_nama'];
                     $hasil[$k]['i_hrg'] = $v['i_hrg'];
+                    $hasil[$k]['i_category'] = $this->get_category($v['i_kode']);
                     $hasil[$k]['i_img'] = $this->get_image($v['i_kode']);
                 }
             }
@@ -173,6 +193,7 @@ class ItemApiCtrl extends CI_Controller
                     $hasil[$k]['i_new'] = $v['i_new'];
                     $hasil[$k]['i_nama'] = $v['i_nama'];
                     $hasil[$k]['i_hrg'] = $v['i_hrg'];
+                    $hasil[$k]['i_category'] = $this->get_category($v['i_kode']);
                     $hasil[$k]['i_img'] = $this->get_image($v['i_kode']);
                 }
             }
@@ -203,6 +224,7 @@ class ItemApiCtrl extends CI_Controller
                     $hasil[$k]['i_sale'] = $v['i_sale'];
                     $hasil[$k]['i_nama'] = $v['i_nama'];
                     $hasil[$k]['i_hrg'] = $v['i_hrg'];
+                    $hasil[$k]['i_category'] = $this->get_category($v['i_kode']);
                     $hasil[$k]['i_img'] = $this->get_image($v['i_kode']);
                 }
             }

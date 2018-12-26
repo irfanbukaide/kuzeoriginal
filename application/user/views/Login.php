@@ -61,12 +61,5 @@ include "layout/Header.php";
     <a href="https://www.instagram.com/<?= $instagram; ?>"><i class="fab fa-instagram fa-2x"></i></a>
     <a href="https://wa.me/62<?= $whatsapp; ?>"><i class="fab fa-whatsapp fa-2x"></i></a>
 </div>
-<script>
-    $(document).ready(function () {
-        setTimeout(function () {
-            $('div.spinner').hide();
-        }, 3000);
-    });
-</script>
 </body>
 </html>

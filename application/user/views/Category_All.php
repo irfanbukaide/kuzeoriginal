@@ -109,6 +109,7 @@ include "layout/Menu.php";
         var app = angular.module("kuze", []);
         app.controller("categoryController", function ($http, $scope) {
 
+            $scope.image = "/assets/img/noimage.png";
             $http.get("/api/category/menu").then(function (response) {
                 $scope.categories = response.data;
             });
