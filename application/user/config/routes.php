@@ -62,6 +62,10 @@ $route['api/item/best_seller'] = 'ItemApiCtrl/best_seller';
 $route['api/item/ksale_item'] = 'ItemApiCtrl/ksale_item';
 $route['api/item/sale_item'] = 'ItemApiCtrl/sale_item';
 
+// api image
+$route['api/image/slide'] = 'ImageApiCtrl/slide';
+$route['api/image/billboard'] = 'ImageApiCtrl/billboard';
+
 // api category
 $route['api/category/menu'] = 'CategoryApiCtrl/json_menu';
 $route['api/category/item_all'] = 'CategoryApiCtrl/json_item_all';

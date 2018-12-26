@@ -162,11 +162,11 @@ include "layout/Menu.php";
                 $scope.sale_items = response.data;
             });
 
-            $http.get("/image/slide").then(function (response) {
+            $http.get("/api/image/slide").then(function (response) {
                 $scope.fotorama_items = response.data;
             });
 
-            $http.get("/image/billboard").then(
+            $http.get("/api/image/billboard").then(
                 function (response) {
                     $scope.img1 = response.data[1]['src'];
                     $scope.img2 = response.data[2]['src'];

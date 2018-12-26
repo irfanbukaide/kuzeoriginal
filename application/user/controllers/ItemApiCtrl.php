@@ -139,6 +139,7 @@ class ItemApiCtrl extends CI_Controller
 
                     $hasil[$k]['i_kode'] = $v['i_kode'];
                     $hasil[$k]['i_url'] = $v['i_url'];
+                    $hasil[$k]['i_best'] = $v['i_best'];
                     $hasil[$k]['i_nama'] = $v['i_nama'];
                     $hasil[$k]['i_hrg'] = $v['i_hrg'];
                     $hasil[$k]['i_img'] = $this->get_image($v['i_kode']);
@@ -169,6 +170,7 @@ class ItemApiCtrl extends CI_Controller
 
                     $hasil[$k]['i_kode'] = $v['i_kode'];
                     $hasil[$k]['i_url'] = $v['i_url'];
+                    $hasil[$k]['i_new'] = $v['i_new'];
                     $hasil[$k]['i_nama'] = $v['i_nama'];
                     $hasil[$k]['i_hrg'] = $v['i_hrg'];
                     $hasil[$k]['i_img'] = $this->get_image($v['i_kode']);
@@ -198,6 +200,7 @@ class ItemApiCtrl extends CI_Controller
 
                     $hasil[$k]['i_kode'] = $v['i_kode'];
                     $hasil[$k]['i_url'] = $v['i_url'];
+                    $hasil[$k]['i_sale'] = $v['i_sale'];
                     $hasil[$k]['i_nama'] = $v['i_nama'];
                     $hasil[$k]['i_hrg'] = $v['i_hrg'];
                     $hasil[$k]['i_img'] = $this->get_image($v['i_kode']);

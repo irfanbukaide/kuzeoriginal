@@ -111,9 +111,9 @@ class CategoryApiCtrl extends CI_Controller
                 $item = $this->item->as_array()->where('i_kode', $ik->i_kode)->get();
                 $category = $this->get_category($item['i_kode']);
                 $image = $this->get_image($item['i_kode']);
-                $item['i_img'] = '/' . $image;
+                $item['i_img'] = $image;
                 $item['i_category'] = $category;
-                $item['i_url'] = site_url('category/' . $category->k_url . '/item/' . $item['i_url']);
+                $item['i_url'] = site_url('item/' . $item['i_url']);
                 array_push($items, $item);
             }
         }

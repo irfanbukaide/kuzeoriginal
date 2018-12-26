@@ -13,25 +13,6 @@ class ImageApiCtrl extends CI_Controller
 
     }
 
-    public function item($i_kode)
-    {
-        $data = $this->item_img
-            ->where(array('i_kode' => $i_kode))->order_by('created_at', 'DESC')
-            ->get();
-
-        if ($data != NULL) {
-            $image = new Imagick();
-            $image->readimageblob($data->ii_data);
-            $image->setImageCompressionQuality(80);
-
-            $hasil = "data:" . $data->ii_type . ";base64," . (base64_encode($image->getimageblob()));
-        } else {
-            $hasil = base_url('assets/img/noimage.jpg');
-        }
-
-        return $hasil;
-    }
-
     public function slide()
     {
         ob_start('ob_gzhandler');
@@ -65,7 +46,7 @@ class ImageApiCtrl extends CI_Controller
                 $image->readimageblob($v->slide_promo_data);
                 $image->setImageCompressionQuality(80);
 
-                $hasil[$k]['url'] = $this->view_image($v->slide_promo_type, $image->getImageBlob());
+                $hasil[$k]['url'] = $v->slide_promo_url;
                 $hasil[$k]['caption'] = $v->slide_promo_caption;
                 $hasil[$k]['type'] = "image";
 
@@ -93,11 +74,6 @@ class ImageApiCtrl extends CI_Controller
                 $tmp = $this->billboard->get($i);
 
                 if ($tmp) {
-//                    $image = new Imagick();
-//                    $image->readimageblob($tmp->blb_data);
-//                    $image->setImageCompressionQuality(80);
-
-
                     $hasil[$i]['id'] = $tmp->blb_id;
                     $hasil[$i]['alt'] = $tmp->blb_judul;
                     $hasil[$i]['url'] = $tmp->blb_url;
