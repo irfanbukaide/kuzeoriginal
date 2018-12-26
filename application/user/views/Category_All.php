@@ -54,7 +54,7 @@ include "layout/Menu.php";
                                 </div>
                             </div>
                             <div class="py-2">
-                                <p class="text-muted text-sm mb-1" ng-bind="item.i_category.k_nama"></p>
+                                <p class="text-muted text-sm mb-1" ng-bind="item.i_category"></p>
                                 <h3 class="h6 text-uppercase mb-1"><a href="detail.html" class="text-dark">{{
                                         item.i_nama }}</a>
                                 </h3><span class="text-muted">{{ item.i_hrg | rupiah }}</span>

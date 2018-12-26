@@ -8,12 +8,16 @@ include "layout/Menu.php";
         <div class="container c-padding-header">
             <div class="c-breadcrumb">
                 <nav class="c-nav-breadcrumb">
-                    <a class="breadcrumb-item" href="<?= site_url('/'); ?>">Home</a>
+                    <a class="breadcrumb-item" href="<?= $parenturl; ?>">
+                        <?= $parentname; ?>
+                    </a>
                     <i class="fa fa-arrow-right"></i>
-                    <a class="breadcrumb-item" href="<?= $breadcumburl; ?>"><?= $breadcumb; ?></a>
+                    <a class="breadcrumb-item" href="<?= $breadcrumburl; ?>">
+                        <?= $breadcrumbname; ?>
+                    </a>
                     <i class="fa fa-arrow-right"></i>
                     <span class="breadcrumb-item c-breadcrum-active"><a
-                                href="<?= $breadcumburl1; ?>"><?= $breadcumb1; ?></a></span>
+                                href="#"><?= $breadcrumbcurrent; ?></a></span>
                 </nav>
             </div>
         </div>
@@ -36,8 +40,7 @@ include "layout/Menu.php";
                      data-height="400">
                     <?php if (isset($images)): ?>
                         <?php foreach ($images as $image): ?>
-                            <img src="<?= $image->ii_url; ?>"
-                                 class="card-img-top">
+                            <img src="<?= base_url($image->ii_url); ?>" class="card-img-top">
                         <?php endforeach; ?>
                     <?php else: ?>
                         <img src="<?= base_url('assets/img/noimage.jpg'); ?>"

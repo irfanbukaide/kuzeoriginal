@@ -149,16 +149,16 @@ include "layout/Menu.php";
             $scope.img5 = "/assets/img/blank.jpg";
 
 
-            $http.get("/item/new_arrival").then(function (response) {
+            $http.get("/api/item/new_arrival").then(function (response) {
                 $scope.new_arrivals = response.data;
             });
 
 
-            $http.get("/item/best_seller").then(function (response) {
+            $http.get("/api/item/best_seller").then(function (response) {
                 $scope.best_sellers = response.data;
             });
 
-            $http.get("/item/sale_item").then(function (response) {
+            $http.get("/api/item/sale_item").then(function (response) {
                 $scope.sale_items = response.data;
             });
 

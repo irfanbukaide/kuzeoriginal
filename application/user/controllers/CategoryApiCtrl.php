@@ -44,9 +44,14 @@ class CategoryApiCtrl extends CI_Controller
         $this->load->model('Kategori_m', 'kategori');
         $this->load->model('Item_kategori_m', 'item_kategori');
 
-        $category = $this->kategori->with_item_kategori('where:i_kode=\'' . $i_kode . '\'')->get();
+        $categories = array();
+        $item_categories = $this->item_kategori->where('i_kode', $i_kode)->with_kategori()->get_all();
+        foreach ($item_categories as $item_category) {
+            array_push($categories, $item_category->kategori->k_nama);
+        }
 
-        return $category;
+
+        return implode(', ', $categories);
 
     }
 

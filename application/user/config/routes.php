@@ -26,10 +26,10 @@ $route['sale_item/item/(:any)/detil'] = 'CategoryCtrl/get_item_saleitem/$1';
 $route['sale_item/item/(:any)/add_to_bag'] = 'bag/add/$1';
 $route['category'] = 'CategoryCtrl';
 $route['category/(:any)'] = 'CategoryCtrl/with/$1';
-$route['category/all/item/(:any)'] = 'ItemCtrl/index';
-$route['category/all/item/(:any)/detil'] = 'CategoryCtrl/get_item_detil_all/$1';
-$route['category/(:any)/item/(:any)'] = 'CategoryCtrl/get_item_detil/$1/$2';
-$route['category/(:any)/item/(:any)/detil'] = 'CategoryCtrl/get_item_detil/$1/$2';
+$route['category/all/item/(:any)'] = 'ItemCtrl/get_item_from_url/$1';
+$route['category/all/item/(:any)/detil'] = 'ItemCtrl/get_item_from_url/$1';
+$route['category/(:any)/item/(:any)'] = 'ItemCtrl/get_item_from_url/$2';
+$route['category/(:any)/item/(:any)/detil'] = 'ItemCtrl/get_item_from_url/$2';
 $route['category/(:any)/item/(:any)/add_to_bag'] = 'bag/add';
 $route['bag/(:any)/delete'] = 'bag/delete/$1';
 $route['bag/checkout/with_promo/(:any)'] = 'bag/checkout_with_promo/$1';
@@ -55,10 +55,12 @@ $route['api/home/new_arrival'] = 'HomeApiCtrl/new_arrival';
 $route['api/home/new_arrival'] = 'HomeApiCtrl/new_arrival';
 
 // api item
+$route['api/item/new_arrival'] = 'ItemApiCtrl/new_arrival';
 $route['api/item/knew_arrival'] = 'ItemApiCtrl/knew_arrival';
 $route['api/item/kbest_seller'] = 'ItemApiCtrl/kbest_seller';
-$route['api/item/kbest_seller'] = 'ItemApiCtrl/kbest_seller';
+$route['api/item/best_seller'] = 'ItemApiCtrl/best_seller';
 $route['api/item/ksale_item'] = 'ItemApiCtrl/ksale_item';
+$route['api/item/sale_item'] = 'ItemApiCtrl/sale_item';
 
 // api category
 $route['api/category/menu'] = 'CategoryApiCtrl/json_menu';
