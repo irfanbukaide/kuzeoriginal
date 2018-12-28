@@ -340,14 +340,6 @@ h5.c-price {
     font-size: 15px;
 }
 
-.btn {
-    -webkit-border-radius: 0;
-    -moz-border-radius: 0;
-    border-radius: 0;
-    background-color: transparent;
-    border: 1px solid #c2c2c2;
-}
-
 .btn-csr {
     color: #444;
 }
@@ -1560,4 +1552,11 @@ a.c-modal-clr:hover {
 
     }
 
+}
+
+.page-item.active .page-link {
+    z-index: 1;
+    color: #fff;
+    background-color: #1d2124;
+    border-color: #1d2124;
 }
