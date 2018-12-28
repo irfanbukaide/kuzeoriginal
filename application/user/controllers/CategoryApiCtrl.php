@@ -89,7 +89,7 @@ class CategoryApiCtrl extends CI_Controller
                 $category = $this->get_category($id);
                 $item->i_img = $image;
                 $item->i_category = $category;
-                $item->i_url = site_url('category/all/item/' . $item->i_url);
+                $item->i_url = site_url('item/' . $item->i_url);
             }
 
             return (array)$items;

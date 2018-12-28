@@ -3,8 +3,10 @@ body {
 }
 
 a {
-    -webkit-transition: all .3s;
-    transition: all .3s;
+    color: #1d2124;
+    text-decoration: none;
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects;
 }
 
 /* Header, Nav, Chart */
@@ -1560,3 +1562,4 @@ a.c-modal-clr:hover {
     background-color: #1d2124;
     border-color: #1d2124;
 }
+
