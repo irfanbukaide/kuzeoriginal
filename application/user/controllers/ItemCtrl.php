@@ -28,11 +28,7 @@ class ItemCtrl extends MY_Controller
         $this->data->images = $images;
 
 
-//        $this->load->view('ItemDetil', $this->data);
-
-        echo '<pre>';
-        print_r($this->data->item_detils);
-        echo '</pre>';
+        $this->load->view('ItemDetil', $this->data);
     }
 
 }

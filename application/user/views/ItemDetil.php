@@ -3,26 +3,14 @@ include "layout/Header.php";
 include "layout/Menu.php";
 ?>
 
-    <!-- ======= Breadcrumb ======= -->
-    <div class="wrapper-bredcrumb">
-        <div class="container c-padding-header">
-            <div class="c-breadcrumb">
-                <nav class="c-nav-breadcrumb">
-                    <a class="breadcrumb-item" href="<?= $parenturl; ?>">
-                        <?= $parentname; ?>
-                    </a>
-                    <i class="fa fa-arrow-right"></i>
-                    <a class="breadcrumb-item" href="<?= $breadcrumburl; ?>">
-                        <?= $breadcrumbname; ?>
-                    </a>
-                    <i class="fa fa-arrow-right"></i>
-                    <span class="breadcrumb-item c-breadcrum-active"><a
-                                href="#"><?= $breadcrumbcurrent; ?></a></span>
-                </nav>
+    <section class="hero">
+        <div class="container">
+            <!-- Hero Content-->
+            <div class="hero-content pb-2 pt-2 text-center">
+                <h2 class="hero-heading">Detail</h2>
             </div>
         </div>
-    </div>
-
+    </section>
 
     <!-- ======= Detail Site ======= -->
     <div class="container c-padding-header c-margin-100">
