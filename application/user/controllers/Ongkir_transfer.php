@@ -141,7 +141,7 @@ class Ongkir_transfer extends MY_Controller
                 );
 
                 $this->order->update($data_update, 'orders_noid');
-                redirect('checkout/' . $orders_noid . '/konfirmasi_pembayaran');
+                redirect('checkout/' . $orders_noid . '/payment_confirm');
             } catch (Exception $e) {
                 $this->data->gagal = 'Gagal mengisi metode pengiriman & pembayaran.';
                 $this->session->set_flashdata('gagal', $this->data->gagal);

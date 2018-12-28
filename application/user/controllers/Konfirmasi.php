@@ -347,7 +347,7 @@ class Konfirmasi extends MY_Controller
         if ($order->orders_status == 3) {
             $this->load->view('Konfirmasi_sukses', $this->data);
         } else {
-            redirect('checkout/' . $this->uri->segment(2) . '/konfirmasi_pembayaran');
+            redirect('checkout/' . $this->uri->segment(2) . '/payment_confirm');
         }
     }
 }

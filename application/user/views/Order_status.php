@@ -163,7 +163,7 @@ include "layout/Menu.php";
                                                 </a>
                                             <?php elseif ($order->orders_status == 2): ?>
                                                 <a class="btn c-login-btn c-edit"
-                                                   href="<?= site_url('checkout/' . $order->orders_noid . '/konfirmasi_pembayaran'); ?>">
+                                                   href="<?= site_url('checkout/' . $order->orders_noid . '/payment_confirm'); ?>">
                                                     <i class="fas fa-sync mr-2"></i>Process
                                                 </a>
                                             <?php else: ?>

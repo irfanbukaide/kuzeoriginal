@@ -121,7 +121,7 @@ include "layout/Menu.php";
                     </tr>
                     </tbody>
                 </table>
-                <a href="<?= site_url('Konfirmasi_pembayaran'); ?>" class="btn btn-csr c-btn-cart mt-3 float-right">KONFIRMASI
+                <a href="<?= site_url('payment_confirm'); ?>" class="btn btn-csr c-btn-cart mt-3 float-right">KONFIRMASI
                     PEMBAYARAN</a>
             </div>
         </div>

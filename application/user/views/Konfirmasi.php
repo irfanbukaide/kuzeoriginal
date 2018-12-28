@@ -22,7 +22,7 @@ include "layout/Menu.php";
                 <a class="breadcrumb-item" href="">Order Detail</a>
                 <i class="fa fa-arrow-right"></i>
                 <a class="breadcrumb-item active-bread"
-                   href="<?= site_url('checkout/' . $this->uri->segment(2) . '/konfirmasi_pembayaran'); ?>">Confirmation</a>
+                   href="<?= site_url('checkout/' . $this->uri->segment(2) . '/payment_confirm'); ?>">Confirmation</a>
             </nav>
         </div>
     </div>
@@ -161,7 +161,7 @@ include "layout/Menu.php";
         <div class="row">
             <div class="col-md-8 col-12 c-margin-auto">
                 <h5 class="c-color-444"><i class="fa fa-money mr-2 mt-4 mb-2"></i>Payment Confirmation</h5>
-                <form action="konfirmasi_pembayaran/simpan" method="post">
+                <form action="payment_confirm/simpan" method="post">
                     <input type="hidden" name="ecommerce_eazy" value="<?= $this->security->get_csrf_hash(); ?>">
                     <div class="form-group">
                         <label class="col-form-label">Bank Account <span class="c-form-star">*</span></label>
