@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Konfirmasi extends MY_Controller
+class PaymentConfirmCtrl extends MY_Controller
 {
     public function __construct()
     {
