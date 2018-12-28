@@ -1566,10 +1566,6 @@ a.c-modal-clr:hover {
     font-size: 0.97rem;
 }
 
-.c-kon-font th, span {
-    font-size: 0.97rem;
-}
-
 /* Absolute Center Spinner */
 .loading {
     position: fixed;
