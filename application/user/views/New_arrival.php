@@ -16,7 +16,7 @@ include "layout/Menu.php";
         <div class="products-grid col-xl-12 col-lg-12 order-lg-12">
             <header class="product-grid-header">
                 <div class="mr-3 mb-3">
-                    Showing <strong>1-12 </strong>of <strong>158 </strong>products
+                    Total <strong ng-bind="totalItems"></strong> products
                 </div>
                 <div class="mr-3 mb-3">
                     <span class="mr-2">Show</span>
@@ -35,7 +35,7 @@ include "layout/Menu.php";
             </header>
             <div class="row">
                 <!-- product-->
-                <div ng-repeat="item in new_arrivals" class="col-xl-3 col-sm-3">
+                <div ng-repeat="item in items" class="col-xl-3 col-sm-3">
                     <div class="product">
                         <div class="product-image">
                             <div class="ribbon ribbon-info" ng-if="item.i_new == 1">New Arrival</div>
@@ -63,18 +63,9 @@ include "layout/Menu.php";
                 <!-- /product-->
             </div>
             <nav aria-label="page navigation" class="d-flex justify-content-center mb-5 mt-3">
-                <ul class="pagination">
-                    <li class="page-item"><a href="#" aria-label="Previous" class="page-link"><span
-                                    aria-hidden="true">Prev</span><span class="sr-only">Previous</span></a></li>
-                    <li class="page-item active"><a href="#" class="page-link">1 </a></li>
-                    <li class="page-item"><a href="#" class="page-link">2 </a></li>
-                    <li class="page-item"><a href="#" class="page-link">3 </a></li>
-                    <li class="page-item"><a href="#" class="page-link">4 </a></li>
-                    <li class="page-item"><a href="#" class="page-link">5 </a></li>
-                    <li class="page-item"><a href="#" aria-label="Next" class="page-link"><span
-                                    aria-hidden="true">Next</span><span
-                                    class="sr-only">Next     </span></a></li>
-                </ul>
+                <ul uib-pagination total-items="totalItems" ng-model="currentPage" max-size="maxSize"
+                    boundary-link-numbers="true"></ul>
+
             </nav>
         </div>
         <!-- / Grid End-->
@@ -88,13 +79,25 @@ include "layout/Menu.php";
         });
     </script>
     <script src="<?= base_url('node_modules/angular/angular.min.js'); ?>"></script>
-    <script src="<?= base_url('node_modules/angular-fotorama/angular-fotorama.js'); ?>"></script>
+    <script src="<?= base_url('node_modules/ui-bootstrap4/dist/ui-bootstrap-tpls-3.0.5.min.js'); ?>"></script>
     <script>
-        var app = angular.module("kuze", []);
+        var app = angular.module("kuze", ['ui.bootstrap']);
         app.controller("NewArrivalController", function ($http, $scope) {
-            $scope.image = "/assets/img/noimage.png";
+
+            $scope.currentPage = 1;
+            $scope.maxSize = 10;
+            $scope.itemsPerPage = 9;
+
             $http.get("/api/item/knew_arrival").then(function (response) {
-                $scope.new_arrivals = response.data;
+                var items = response.data;
+                $scope.totalItems = items.length;
+
+                $scope.$watch('currentPage + numPerPage', function () {
+                    var begin = (($scope.currentPage - 1) * $scope.itemsPerPage),
+                        end = begin + $scope.itemsPerPage;
+
+                    $scope.items = items.slice(begin, end);
+                });
             });
         });
 

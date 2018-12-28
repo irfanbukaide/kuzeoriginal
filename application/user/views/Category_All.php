@@ -2,7 +2,6 @@
 include "layout/Header.php";
 include "layout/Menu.php";
 ?>
-
     <section class="hero">
         <div class="container">
             <!-- Hero Content-->
@@ -17,13 +16,13 @@ include "layout/Menu.php";
             <div class="products-grid col-xl-10 col-lg-9 order-lg-2">
                 <header class="product-grid-header">
                     <div class="mr-3 mb-3">
-                        Showing <strong>1-12 </strong>of <strong>158 </strong>products
+                        Total <strong ng-bind="totalItems"></strong> products
                     </div>
                     <div class="mr-3 mb-3">
                         <span class="mr-2">Show</span>
-                        <a href="#" class="product-grid-header-show active">12</a>
-                        <a href="#" class="product-grid-header-show ">24</a>
-                        <a href="#" class="product-grid-header-show ">All</a>
+                        <a ng-click="showOnly(9)" class="product-grid-header-show">9</a>
+                        <a ng-click="showOnly(18)" class="product-grid-header-show">18</a>
+                        <a ng-click="showOnly()" class="product-grid-header-show">All</a>
                     </div>
                     <div class="mb-3 d-flex align-items-center"><span class="d-inline-block mr-1">Sort by</span>
                         <select class="custom-select w-auto border-0">
@@ -64,18 +63,11 @@ include "layout/Menu.php";
                     <!-- /product-->
                 </div>
                 <nav aria-label="page navigation" class="d-flex justify-content-center mb-5 mt-3">
-                    <ul class="pagination">
-                        <li class="page-item"><a href="#" aria-label="Previous" class="page-link"><span
-                                        aria-hidden="true">Prev</span><span class="sr-only">Previous</span></a></li>
-                        <li class="page-item active"><a href="#" class="page-link">1 </a></li>
-                        <li class="page-item"><a href="#" class="page-link">2 </a></li>
-                        <li class="page-item"><a href="#" class="page-link">3 </a></li>
-                        <li class="page-item"><a href="#" class="page-link">4 </a></li>
-                        <li class="page-item"><a href="#" class="page-link">5 </a></li>
-                        <li class="page-item"><a href="#" aria-label="Next" class="page-link"><span aria-hidden="true">Next</span><span
-                                        class="sr-only">Next     </span></a></li>
-                    </ul>
+                    <ul uib-pagination total-items="totalItems" ng-model="currentPage" max-size="maxSize"
+                        boundary-link-numbers="true"></ul>
+
                 </nav>
+
             </div>
             <!-- / Grid End-->
             <!-- Sidebar-->
@@ -107,15 +99,29 @@ include "layout/Menu.php";
     <script src="<?= base_url('node_modules/angular/angular.min.js'); ?>"></script>
     <script src="<?= base_url('node_modules/ui-bootstrap4/dist/ui-bootstrap-tpls-3.0.5.min.js'); ?>"></script>
     <script>
-        var app = angular.module("kuze", []);
+        var app = angular.module("kuze", ['ui.bootstrap']);
         app.controller("categoryController", function ($http, $scope) {
+
 
             $http.get("/api/category/menu").then(function (response) {
                 $scope.categories = response.data;
             });
 
+            $scope.currentPage = 1;
+            $scope.maxSize = 10;
+            $scope.itemsPerPage = 9;
+
             $http.get("/api/category/item_all").then(function (response) {
-                $scope.items = response.data;
+
+                var items = response.data;
+                $scope.totalItems = items.length;
+
+                $scope.$watch('currentPage + numPerPage', function () {
+                    var begin = (($scope.currentPage - 1) * $scope.itemsPerPage),
+                        end = begin + $scope.itemsPerPage;
+
+                    $scope.items = items.slice(begin, end);
+                });
             });
 
 
