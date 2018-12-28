@@ -65,7 +65,7 @@ include "layout/Menu.php";
                             <!--<img class="d-flex mr-3 c-img-order" src="assets/img/detail_product1.jpg" alt="Generic placeholder image">-->
                             <div class="media-body">
                                 <a href="" class="c-title"><h5 class="mt-0">B1H04EV - <span
-                                                class="c-success">Sukses</span></h5></a>
+                                                class="c-success">success</span></h5></a>
                                 <h5 class="c-price-history mb-1">Rp100.000,-</h5>
                                 <p class="card-text">
                                     <small class="text-muted">24 Sep 2018</small>
@@ -78,7 +78,7 @@ include "layout/Menu.php";
                             <!--<img class="d-flex mr-3 c-img-order" src="assets/img/detail_product1.jpg" alt="Generic placeholder image">-->
                             <div class="media-body">
                                 <a href="" class="c-title"><h5 class="mt-0">B1H04EV - <span
-                                                class="c-success">Sukses</span></h5></a>
+                                                class="c-success">success</span></h5></a>
                                 <h5 class="c-price-history mb-1">Rp100.000,-</h5>
                                 <p class="card-text">
                                     <small class="text-muted">24 Sep 2018</small>
@@ -91,7 +91,7 @@ include "layout/Menu.php";
                             <!--<img class="d-flex mr-3 c-img-order" src="assets/img/detail_product1.jpg" alt="Generic placeholder image">-->
                             <div class="media-body">
                                 <a href="" class="c-title"><h5 class="mt-0">B1H04EV - <span
-                                                class="c-success">Sukses</span></h5></a>
+                                                class="c-success">success</span></h5></a>
                                 <h5 class="c-price-history mb-1">Rp100.000,-</h5>
                                 <p class="card-text">
                                     <small class="text-muted">24 Sep 2018</small>

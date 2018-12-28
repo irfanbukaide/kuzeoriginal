@@ -229,7 +229,7 @@ class Konfirmasi extends MY_Controller
 //            }
 //        }
 //
-//        redirect('checkout/' . $this->uri->segment(2) . '/sukses');
+//        redirect('checkout/' . $this->uri->segment(2) . '/success');
 
         $orders_noid = $this->uri->segment(2);
         $order_bukti = $this->order_bukti->where('orders_noid', $orders_noid)->get();
@@ -260,17 +260,17 @@ class Konfirmasi extends MY_Controller
             // update
             $this->order_bukti->update($konfirmasi_array, 'orders_noid');
             $this->order->where('orders_noid', $orders_noid)->update(array('orders_status' => 3));
-            redirect('checkout/' . $this->uri->segment(2) . '/sukses');
+            redirect('checkout/' . $this->uri->segment(2) . '/success');
         } else {
             // insert
             $this->order_bukti->insert($konfirmasi_array);
 
             $this->order->where('orders_noid', $orders_noid)->update(array('orders_status' => 3));
-            redirect('checkout/' . $this->uri->segment(2) . '/sukses');
+            redirect('checkout/' . $this->uri->segment(2) . '/success');
         }
     }
 
-    public function sukses()
+    public function success()
     {
         $this->data->orders_noid = $this->uri->segment(2);
         $this->data->orders = $this->order->with_order_detil()->where_orders_noid($this->data->orders_noid)->get();
@@ -345,7 +345,7 @@ class Konfirmasi extends MY_Controller
 
         $order = $this->order->where('orders_noid', $this->uri->segment(2))->get();
         if ($order->orders_status == 3) {
-            $this->load->view('Konfirmasi_sukses', $this->data);
+            $this->load->view('Konfirmasi_success', $this->data);
         } else {
             redirect('checkout/' . $this->uri->segment(2) . '/payment_confirm');
         }

@@ -40,7 +40,7 @@ include "layout/Menu.php";
                             <?php elseif ($orders->orders_status == 5): ?>
                                 ADMIN BELUM KONFIRMASI PENGIRIMAN
                             <?php elseif ($orders->orders_status == 6): ?>
-                                SUKSES (Telah dikirim)
+                                success (Telah dikirim)
                             <?php elseif ($orders->orders_status == 7): ?>
                                 BATAL
                             <?php endif; ?></p>

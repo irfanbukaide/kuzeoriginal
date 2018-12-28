@@ -5,7 +5,7 @@ include "layout/Menu.php";
 <?php $nomor_order = $this->uri->segment(2); ?>
     <!-- ======= Banner Checkout ======= -->
     <div class="wrapper-cart c-margin-bot-cart">
-        <h5 class="text-center c-title-cart">Konfirmasi Sukses</h5>
+        <h5 class="text-center c-title-cart">Konfirmasi success</h5>
         <div class="c-breadcrumb text-center c-bread-padding">
             <nav class="c-nav-breadcrumb c-bread-cart">
                 <a class="breadcrumb-item " href="<?= site_url('/'); ?>">Home</a>
@@ -20,8 +20,8 @@ include "layout/Menu.php";
                 <i class="fa fa-arrow-right"></i>
                 <a class="breadcrumb-item " href="<?= site_url('Konfirmasi'); ?>">Confirmation</a>
                 <i class="fa fa-arrow-right"></i>
-                <a class="breadcrumb-item active-bread" href="<?= site_url('Konfirmasi_sukses'); ?>">Konfirmasi
-                    Sukses</a>
+                <a class="breadcrumb-item active-bread" href="<?= site_url('Konfirmasi_success'); ?>">Konfirmasi
+                    success</a>
             </nav>
         </div>
     </div>
@@ -76,7 +76,7 @@ include "layout/Menu.php";
         <h4 class="text-center mt-5">
             <b>Konfirmasi Pembayaran</b>
         </h4>
-        <h2 class="text-center">Sukses</h2>
+        <h2 class="text-center">success</h2>
         <br>
         <div class="row mb-3">
             <div class="col-3 m-auto">
