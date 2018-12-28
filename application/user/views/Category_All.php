@@ -105,6 +105,7 @@ include "layout/Menu.php";
         });
     </script>
     <script src="<?= base_url('node_modules/angular/angular.min.js'); ?>"></script>
+    <script src="<?= base_url('node_modules/ui-bootstrap4/dist/ui-bootstrap-tpls-3.0.5.min.js'); ?>"></script>
     <script>
         var app = angular.module("kuze", []);
         app.controller("categoryController", function ($http, $scope) {
