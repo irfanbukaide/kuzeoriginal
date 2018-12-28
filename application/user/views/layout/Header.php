@@ -13,10 +13,13 @@
     <link rel="stylesheet" href="<?= site_url('assets/vendor/select2/select2-bootstrap4.min.css'); ?>"/>
     <link rel="stylesheet" href="<?= site_url('assets/vendor/datatable/css/dataTables.bootstrap4.min.css'); ?>"/>
     <link rel="stylesheet" href="<?= base_url('assets/vendor/fotorama/fotorama.css'); ?>">
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/eazy-style.css') ?>">
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/user.css') ?>">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
           integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <link rel="stylesheet" href="<?php echo base_url('assets/css/eazy-style.css') ?>">
+    <link rel="stylesheet" href="<?php echo base_url('assets/css/header.css') ?>">
+    <link rel="stylesheet" href="<?php echo base_url('assets/css/user.css') ?>">
+
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="<?= base_url('assets/vendor/jquery/jquery.min.js'); ?>"></script>
@@ -61,4 +64,3 @@
 
     <title><?= $brandname; ?></title>
 </head>
-<body>
