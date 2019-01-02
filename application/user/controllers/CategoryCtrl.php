@@ -11,7 +11,7 @@ class CategoryCtrl extends MY_Controller
 
     public function index()
     {
-        $this->data->items = $this->item->get_all();
+//        $this->data->items = $this->item->get_all();
         $this->load->view('Category_All', $this->data);
     }
 

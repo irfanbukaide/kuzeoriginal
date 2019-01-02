@@ -3,11 +3,11 @@
   <component name="WebServers">
     <option name="servers">
       <webServer id="5ff348b7-813c-4fb0-8315-679b62df1776" name="kuze.bukaide.com" url="http://kuze.bukaide.com">
-        <fileTransfer host="kuze.bukaide.com" port="21" rootFolder="/public_html">
+        <fileTransfer host="kuze.bukaide.com" port="22" rootFolder="/home/u7284339/public_html" accessType="SFTP">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
           </advancedOptions>
-          <option name="port" value="21" />
+          <option name="port" value="22" />
         </fileTransfer>
       </webServer>
       <webServer id="cc308037-99b4-4980-85bc-6284602d4581" name="kuzeoriginal.com" url="http://kuzeoriginal.com">

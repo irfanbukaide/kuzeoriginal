@@ -42,9 +42,9 @@ class ImageApiCtrl extends CI_Controller
         $promos = $this->slide_promo->where('slide_promo_isaktif', 1)->get_all();
         if ($promos) {
             foreach ($promos as $k => $v) {
-                $image = new Imagick();
-                $image->readimageblob($v->slide_promo_data);
-                $image->setImageCompressionQuality(80);
+//                $image = new Imagick();
+//                $image->readimageblob($v->slide_promo_data);
+//                $image->setImageCompressionQuality(80);
 
                 $hasil[$k]['url'] = $v->slide_promo_url;
                 $hasil[$k]['caption'] = $v->slide_promo_caption;
