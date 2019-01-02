@@ -34,6 +34,7 @@ $route['category/(:any)/item/(:any)/add_to_bag'] = 'bag/add';
 $route['item/(:any)'] = 'ItemCtrl/get_item_from_url/$1';
 $route['item/(:any)/add_to_bag'] = 'BagCtrl/add';
 $route['bag'] = 'BagCtrl';
+$route['bag/modal_bag'] = 'BagCtrl/modal_bag';
 $route['bag/(:any)/delete'] = 'BagCtrl/delete/$1';
 $route['bag/checkout/with_promo/(:any)'] = 'BagCtrl/checkout_with_promo/$1';
 $route['checkout/(:any)/shipping_address'] = 'AddressCtrl/get/$1';

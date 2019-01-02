@@ -1,15 +1,46 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class BagApiCtrl extends MY_Controller
+class BagApiCtrl extends CI_Controller
 {
     public function __construct()
     {
         parent::__construct();
+
+        $this->load->model('Bag_m', 'cart');
+        $this->load->model('Item_m', 'item');
+        $this->load->model('Item_detil_m', 'item_detil');
+        $this->load->model('Item_img_m', 'item_img');
+        $this->load->model('Promo_m', 'promo');
+        $this->load->model('Ukuran_m', 'ukuran');
+
+
         if (!$this->session->isonline) {
             echo json_encode('Session timeout', true);
             exit();
         }
+    }
+
+    private function get_image($i_kode)
+    {
+
+        $data = $this->item_img
+            ->where(array('i_kode' => $i_kode))->order_by('created_at', 'DESC')
+            ->get();
+
+        if ($data != NULL) {
+//            $image = new Imagick();
+//            $image->readimageblob($data->ii_data);
+//            $image->setImageCompressionQuality(80);
+//            $hasil = $this->view_image($data->ii_type, $image->getImageBlob());
+
+            $hasil = $data->ii_url;
+        } else {
+            $im = base_url('assets/img/noimage.jpg');
+            $hasil = $im;
+        }
+
+        return $hasil;
     }
 
     public function bag_index()
@@ -30,16 +61,7 @@ class BagApiCtrl extends MY_Controller
                     }
 
                     // item_img
-                    $item_img = $this->item_img->where(array(
-                        'i_kode' => $item_detil->i_kode
-                    ))->get();
-                    if ($item_img) {
-                        $bag->image_id = $item_img->ii_kode;
-                        $bag->image_data = 'data:' . $item_img->ii_type . ';base64,' . (base64_encode($item_img->ii_data));
-                    } else {
-                        $bag->image_id = 'No Image';
-                        $bag->image_data = base_url('assets/img/noimage.jpg');
-                    }
+                    $bag->image_url = $this->get_image($bag->item_kode);
 
                     // item ukuran
                     $ukuran = $this->ukuran->where('u_kode', $item_detil->u_kode)->get();
@@ -63,10 +85,10 @@ class BagApiCtrl extends MY_Controller
 
         $total = function () {
             $hasil = 0;
-            $carts = $this->cart->where('pengguna_kode', $_SESSION['id'])->get_all();
-            if ($carts) {
-                foreach ($carts as $cart_total) {
-                    $hasil += (int)$cart_total->ca_tharga;
+            $bags = $this->cart->where('pengguna_kode', $_SESSION['id'])->get_all();
+            if ($bags) {
+                foreach ($bags as $bag_total) {
+                    $hasil += (int)$bag_total->ca_tharga;
                 }
             } else {
                 $hasil = 0;
@@ -118,16 +140,7 @@ class BagApiCtrl extends MY_Controller
                     }
 
                     // item_img
-                    $item_img = $this->item_img->where(array(
-                        'i_kode' => $item_detil->i_kode
-                    ))->get();
-                    if ($item_img) {
-                        $bag->image_id = $item_img->ii_kode;
-                        $bag->image_data = 'data:' . $item_img->ii_type . ';base64,' . (base64_encode($item_img->ii_data));
-                    } else {
-                        $bag->image_id = 'No Image';
-                        $bag->image_data = base_url('assets/img/noimage.jpg');
-                    }
+                    $bag->image_url = $this->get_image($bag->item_kode);
 
                     // item ukuran
                     $ukuran = $this->ukuran->where('u_kode', $item_detil->u_kode)->get();
@@ -151,10 +164,10 @@ class BagApiCtrl extends MY_Controller
 
         $total = function () {
             $hasil = 0;
-            $carts = $this->cart->where('pengguna_kode', $_SESSION['id'])->get_all();
-            if ($carts) {
-                foreach ($carts as $cart_total) {
-                    $hasil += (int)$cart_total->ca_tharga;
+            $bags = $this->cart->where('pengguna_kode', $_SESSION['id'])->get_all();
+            if ($bags) {
+                foreach ($bags as $bag_total) {
+                    $hasil += (int)$bag_total->ca_tharga;
                 }
             } else {
                 $hasil = 0;

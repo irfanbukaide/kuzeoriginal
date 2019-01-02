@@ -61,19 +61,19 @@ class CategoryApiCtrl extends CI_Controller
         // load model
         $this->load->model('Kategori_m', 'kategori');
         $this->load->model('Item_kategori_m', 'item_kategori');
-        $categories = $this->kategori->fields('k_kode,k_url,k_nama')->get_all();
-        $categories = function () use ($categories) {
-            foreach ($categories as $category) {
-                $id = $category->k_kode;
-                $counter = $this->item_kategori->where('k_kode', $id)->count_rows();
-                $category->counter = $counter;
-                $category->k_url = site_url('category/') . $category->k_url;
-            }
 
-            return (array)$categories;
-        };
+        $array_categories = array();
+        $categories = $this->kategori->as_array()->fields('k_kode,k_url,k_nama')->get_all();
+        foreach ($categories as $category) {
+            $id = $category['k_kode'];
+            $counter = $this->item_kategori->where('k_kode', $id)->count_rows();
+            $category['counter'] = $counter;
+            $category['k_url'] = site_url('category/') . $category['k_url'];
 
-        echo json_encode($categories(), JSON_UNESCAPED_UNICODE);
+            array_push($array_categories, $category);
+        }
+
+        echo json_encode($array_categories, JSON_UNESCAPED_UNICODE);
     }
 
     public function json_item_all()
@@ -81,20 +81,21 @@ class CategoryApiCtrl extends CI_Controller
         // load model
         $this->load->model('Item_m', 'item');
 
-        $items = $this->item->fields('i_kode,i_url,i_nama,i_hrg,i_sale,i_new,i_best')->get_all();
-        $items = function () use ($items) {
-            foreach ($items as $item) {
-                $id = $item->i_kode;
-                $image = $this->get_image($id);
-                $category = $this->get_category($id);
-                $item->i_img = $image;
-                $item->i_category = $category;
-                $item->i_url = site_url('item/' . $item->i_url);
-            }
+        $array_items = array();
+        $items = $this->item->as_array()->fields('i_kode,i_url,i_nama,i_hrg,i_sale,i_new,i_best')->get_all();
+        foreach ($items as $item) {
+            $id = $item['i_kode'];
+            $image = $this->get_image($id);
+            $category = $this->get_category($id);
+            $item['i_img'] = $image;
+            $item['i_category'] = $category;
+            $item['i_url'] = site_url('item/' . $item['i_url']);
 
-            return (array)$items;
-        };
-        echo json_encode($items(), JSON_UNESCAPED_UNICODE);
+            array_push($array_items, $item);
+
+        }
+
+        echo json_encode($array_items, JSON_UNESCAPED_UNICODE);
     }
 
     public function json_item_category($k_url)

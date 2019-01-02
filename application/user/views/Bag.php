@@ -17,147 +17,149 @@ include "layout/Menu.php";
         </div>
 
         <!-- ======= Detail Bag ======= -->
-        <div class="container-fluid c-padding-header">
+        <div class="container c-padding-header">
             <?php if (isset($_SESSION['gagal']) && $_SESSION['gagal'] != ""): ?>
-                <div class="alert alert-danger alert-dismissible fade show"
-                     role="alert">
-                    <?php echo $_SESSION['gagal']; ?>
-                    <button type="button" class="close" data-dismiss="alert"
-                            aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-            <?php endif; ?>
-            <?php if (isset($_SESSION['berhasil']) && $_SESSION['berhasil'] != ""): ?>
-                <div class="alert alert-success alert-dismissible fade show"
-                     role="alert">
-                    <?php echo $_SESSION['berhasil']; ?>
-                    <button type="button" class="close" data-dismiss="alert"
-                            aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-            <?php endif; ?>
-            <table class="table table-responsive-md table-bordered c-table-vertical">
-                <tr>
-                    <th class="c-table-thumbnail"></th>
-                    <th class="c-table-name">Product Name</th>
-                    <th class="c-table-price text-center">Size</th>
-                    <th class="c-table-price text-center">Price</th>
-                    <th class="c-table-quantity text-center">Quantity</th>
-                    <th class="c-table-total text-center">Total</th>
-                    <td class="c-table-del text-center"><i class="fa fa-times"></i></td>
-                </tr>
-                <tr ng-repeat="bag in bags">
-                    <td class="text-center">
-                        <img class="c-img-cart" ng-src="{{ bag.image_data }}"
-                             alt="{{ bag.image_id }}"></a>
-                    </td>
-                    <td>
-                        <p class="c-cart-productname">
-                            {{ bag.nama }}
-                        </p>
-                    </td>
-                    <td class="text-center">
-                        <p class="c-cart-productname">
-                            {{ bag.ukuran }}
-                        </p>
-                    </td>
-                    <td class="text-center">
-                        <span id="rupiah" class="c-price-cart c-price-cart">{{ bag.ca_harga | rupiah }}</span>
-                    </td>
-                    <td class="text-center">
-                        <p class="c-cart-productname">
-                            {{ bag.ca_qty }}
-                        </p>
-                    </td>
-                    <td class="text-center">
-                        <span id="rupiah" class="c-price-cart-2">{{ bag.ca_tharga | rupiah }}</span>
-                    </td>
-                    <td class="text-center">
-                        <a title="Hapus item"
-                           href="{{ bag.bag_delete }}"><i
-                                    class="fa fa-times c-black"></i></a>
-                    </td>
-                </tr>
-
-            </table>
-        </div>
-
-
-        <!-- ======= Total Bag ======= -->
-        <div class="container-fluid c-padding-header c-margin-cart-total">
-            <div class="c-cart-total col-lg-5 col-md-7 col-sm-10 px-0 px-sm-3 float-right">
-                <!-- ======= Promo Code ======= -->
-                <h5 class="c-title-cart-total">Remark</h5>
-                <div class="input-group mb-3">
-                    <textarea name="remark" id="remark" type="text" class="form-control"
-                              placeholder="Remark"></textarea>
-                </div>
-                <!-- ======= Promo Code ======= -->
-                <h5 class="c-title-cart-total">Promo Code</h5>
-                <div class="input-group mb-3">
-                    <input name="kode_promo" id="kode_promo" ng-model="kode_promo" type="text" class="form-control"
-                           placeholder="Enter Promo Code"
-                           aria-label="Masukan Kode Voucher">
-                    <div class="input-group-append">
-                        <button id="btn_kode" class="btn btn-kupon btn-csr" ng-click="promo()">Use Code</button>
+                <div class="row">
+                    <div class="alert alert-danger alert-dismissible fade show"
+                         role="alert">
+                        <?php echo $_SESSION['gagal']; ?>
+                        <button type="button" class="close" data-dismiss="alert"
+                                aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
                 </div>
-                <!-- ======= Promo ======= -->
-                <h5 class="c-title-cart-total">Promo</h5>
-                <table class="table table-bordered">
-                    <tbody>
+
+            <?php endif; ?>
+            <?php if (isset($_SESSION['berhasil']) && $_SESSION['berhasil'] != ""): ?>
+                <div class="row">
+                    <div class="alert alert-success alert-dismissible fade show"
+                         role="alert">
+                        <?php echo $_SESSION['berhasil']; ?>
+                        <button type="button" class="close" data-dismiss="alert"
+                                aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+            <?php endif; ?>
+
+            <div class="row">
+                <table class="table table-responsive-md table-bordered c-table-vertical">
                     <tr>
-                        <th class="p-1 pl-4">Coupon</th>
-                        <td class="text-right">
-                            <span class="c-price-cart-3 pl-3" ng-bind="bags_promo_kode"></span>
+                        <th></th>
+                        <th class="c-table-name">Product Name</th>
+                        <th class="c-table-price text-center">Size</th>
+                        <th class="c-table-price text-center">Price</th>
+                        <th class="c-table-quantity text-center">Quantity</th>
+                        <th class="c-table-total text-center">Total</th>
+                        <td class="c-table-del text-center"><i class="fa fa-times"></i></td>
+                    </tr>
+                    <tr ng-repeat="bag in bags">
+                        <td class="text-center">
+                            <img ng-src="{{ bag.image_url }}" width="50" height="50">
                         </td>
-                    </tr>
-                    <tr>
-                    <tr>
-                        <th class="p-1 pl-4">Note</th>
-                        <td class="text-right">
-                            <span class="c-price-cart-2 pl-3 c-l-hight" ng-bind="bags_promo_ket"></span>
+                        <td>
+                            <p class="c-cart-productname" ng-bind="bag.nama"></p>
                         </td>
-                    </tr>
-                    </tbody>
-                </table>
-                <br>
-                <!-- ======= Summary ======= -->
-                <h5 class="c-title-cart-total">Shopping Summary</h5>
-                <table class="table table-bordered">
-                    <tbody>
-                    <tr>
-                        <th class="c-table-cart-total p-1 pl-4">Total Price</th>
-                        <td class="text-right"><span class="c-price-cart-3 pl-3" ng-bind="bags_total | rupiah"></span>
+                        <td class="text-center">
+                            <p class="c-cart-productname" ng-bind="bag.ukuran"></p>
                         </td>
-                    </tr>
-                    <tr>
-                        <th class="p-1 pl-4">Disc. Total Price (-)</th>
-                        <td class="text-right"><span class="c-price-cart-3 pl-3 text-center"
-                                                     ng-bind="bags_promo_harga | rupiah"></span>
+                        <td class="text-center">
+                            <span class="c-price-cart c-price-cart" ng-bind="bag.ca_harga | rupiah"></span>
                         </td>
-                    </tr>
-                    <tr>
-                        <th class="p-1 pl-4">Shipping Charges</th>
-                        <td class="text-right"><span class="c-price-cart-3 pl-3">-</span></td>
-                    </tr>
-                    <tr>
-                        <th nowrap class="p-1 pl-4 pr-4">Disc. Shipping Charges</th>
-                        <td class="text-right"><span class="c-price-cart-3 pl-3">-</span></td>
+                        <td class="text-center">
+                            <p class="c-cart-productname" ng-bind="bag.ca_qty"></p>
+                        </td>
+                        <td class="text-center">
+                            <span class="c-price-cart-2" ng-bind="bag.ca_tharga | rupiah"></span>
+                        </td>
+                        <td class="text-center">
+                            <a title="Hapus item"
+                               ng-href="{{ bag.bag_delete }}"><i
+                                        class="fa fa-times c-black"></i></a>
+                        </td>
                     </tr>
 
-                    <tr>
-                        <th class="p-1 pl-4">Grand Total</th>
-                        <td class="text-right">
-                            <span class="c-price-cart-2 pl-3 c-l-hight" ng-bind="bags_grand_total | rupiah"></span>
-                        </td>
-                    </tr>
-                    </tbody>
                 </table>
-                <a href="{{ bags_url }}" class="btn btn-csr c-btn-cart mt-3 float-right">Address
-                    Shipping</a>
+
+            </div>
+
+            <!--            total bag-->
+            <div class="row">
+                <div class="c-cart-total col-lg-5 col-md-7 col-sm-10 px-0 px-sm-3 float-right">
+                    <!-- ======= Promo Code ======= -->
+                    <h5 class="c-title-cart-total">Remark</h5>
+                    <div class="input-group mb-3">
+                    <textarea name="remark" id="remark" type="text" class="form-control"
+                              placeholder="Remark"></textarea>
+                    </div>
+                    <!-- ======= Promo Code ======= -->
+                    <h5 class="c-title-cart-total">Promo Code</h5>
+                    <div class="input-group mb-3">
+                        <input name="kode_promo" id="kode_promo" ng-model="kode_promo" type="text" class="form-control"
+                               placeholder="Enter Promo Code"
+                               aria-label="Masukan Kode Voucher">
+                        <div class="input-group-append">
+                            <button id="btn_kode" class="btn btn-kupon btn-csr" ng-click="promo()">Use Code</button>
+                        </div>
+                    </div>
+                    <!-- ======= Promo ======= -->
+                    <h5 class="c-title-cart-total">Promo</h5>
+                    <table class="table table-bordered">
+                        <tbody>
+                        <tr>
+                            <th class="p-1 pl-4">Coupon</th>
+                            <td class="text-right">
+                                <span class="c-price-cart-3 pl-3" ng-bind="bags_promo_kode"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                        <tr>
+                            <th class="p-1 pl-4">Note</th>
+                            <td class="text-right">
+                                <span class="c-price-cart-2 pl-3 c-l-hight" ng-bind="bags_promo_ket"></span>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <br>
+                    <!-- ======= Summary ======= -->
+                    <h5 class="c-title-cart-total">Shopping Summary</h5>
+                    <table class="table table-bordered">
+                        <tbody>
+                        <tr>
+                            <th class="c-table-cart-total p-1 pl-4">Total Price</th>
+                            <td class="text-right"><span class="c-price-cart-3 pl-3"
+                                                         ng-bind="bags_total | rupiah"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="p-1 pl-4">Disc. Total Price (-)</th>
+                            <td class="text-right"><span class="c-price-cart-3 pl-3 text-center"
+                                                         ng-bind="bags_promo_harga | rupiah"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="p-1 pl-4">Shipping Charges</th>
+                            <td class="text-right"><span class="c-price-cart-3 pl-3">-</span></td>
+                        </tr>
+                        <tr>
+                            <th nowrap class="p-1 pl-4 pr-4">Disc. Shipping Charges</th>
+                            <td class="text-right"><span class="c-price-cart-3 pl-3">-</span></td>
+                        </tr>
+
+                        <tr>
+                            <th class="p-1 pl-4">Grand Total</th>
+                            <td class="text-right">
+                                <span class="c-price-cart-2 pl-3 c-l-hight" ng-bind="bags_grand_total | rupiah"></span>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <a ng-href="{{ bags_url }}" class="btn btn-csr c-btn-cart mt-3 float-right">Address
+                        Shipping</a>
+                </div>
             </div>
         </div>
     </div>

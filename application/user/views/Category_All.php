@@ -18,12 +18,12 @@ include "layout/Menu.php";
                     <div class="mr-3 mb-3">
                         Total <strong ng-bind="totalItems"></strong> products
                     </div>
-                    <div class="mr-3 mb-3">
-                        <span class="mr-2">Show</span>
-                        <a ng-click="showOnly(9)" class="product-grid-header-show">9</a>
-                        <a ng-click="showOnly(18)" class="product-grid-header-show">18</a>
-                        <a ng-click="showOnly()" class="product-grid-header-show">All</a>
-                    </div>
+                    <!--                    <div class="mr-3 mb-3">-->
+                    <!--                        <span class="mr-2">Show</span>-->
+                    <!--                        <a ng-click="showOnly(9)" class="product-grid-header-show">9</a>-->
+                    <!--                        <a ng-click="showOnly(18)" class="product-grid-header-show">18</a>-->
+                    <!--                        <a ng-click="showOnly()" class="product-grid-header-show">All</a>-->
+                    <!--                    </div>-->
                     <div class="mb-3 d-flex align-items-center"><span class="d-inline-block mr-1">Sort by</span>
                         <select class="custom-select w-auto border-0">
                             <option value="orderby_0">Default</option>

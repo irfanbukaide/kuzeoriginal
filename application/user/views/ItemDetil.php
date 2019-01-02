@@ -163,6 +163,18 @@ include "layout/Menu.php";
         });
     </script>
 
+    <!-- Modal -->
+    <div class="modal fade" id="cart" tabindex="-1" role="dialog" aria-labelledby="cart"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
 <?php
 include "layout/Footer.php";
 ?>

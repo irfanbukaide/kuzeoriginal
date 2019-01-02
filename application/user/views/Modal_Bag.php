@@ -1,84 +1,125 @@
-<div class="row small">
+<div class="row">
     <div class="col text-center c-modal-col">
-        <p class="text-center r-pink f-size"><i class="fa fa-check-circle fa-5x"></i> <br> Successfully Add Items to Bag
+        <p class="text-center r-pink f-size"><i class="fa fa-check-circle fa-5x"></i> <br> <h5>Successfully Add Items to
+            Bag</h5>
         </p>
     </div>
 </div>
 <hr style="padding: 0; margin: 0">
-<div class="row small f-size">
-    <div class="col">
-        <?php
-        $p_kode = isset($_SESSION['id']) ? $_SESSION['id'] : '';
-        $pop_carts = $this->cart->where_pengguna_kode($p_kode)->get_all();
-        if ($pop_carts): ?>
-            <table class="table table-sm table-borderless c-table-col">
-                <thead>
+<div ng-app="kuze" ng-controller="bagCtrl">
+    <div class="row f-size">
+        <div class="col">
+            <table class="table table-sm table-borderless">
                 <tr>
-                    <th scope="col" colspan="2">Item</th>
-                    <th scope="col">QTY</th>
-                    <th scope="col"></th>
+                    <th></th>
+                    <th>Product Name</th>
+                    <th>Size</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                    <th><i class="fa fa-times"></i></th>
                 </tr>
-                </thead>
-
-                <tbody>
-                <?php foreach ($pop_carts as $pop_cart): ?>
-                    <tr>
-                        <td>
-                            <?php if ($item_img($item_detil($pop_cart->item_detil_kode)->item->i_kode) != NULL): ?>
-                                <img src="data:<?= $item_img($item_detil($pop_cart->item_detil_kode)->item->i_kode)->ii_type . ';base64,' . (base64_encode($item_img($item_detil($pop_cart->item_detil_kode)->item->i_kode)->ii_data)); ?>"
-                                     width="50" height="50">
-                            <?php else: ?>
-                                <img src="<?= base_url('assets/img/noimg.png'); ?>"
-                                     alt="" width="50" height="50">
-                            <?php endif; ?>
-                        </td>
-                        <td id="title"><?= $item_detil($pop_cart->item_detil_kode)->item->i_nama; ?></td>
-                        <td>x <?= $pop_cart->ca_qty; ?></td>
-                        <td id="rupiah"><?= $pop_cart->ca_tharga; ?></td>
-                    </tr>
-                <?php endforeach; ?>
-                </tbody>
-                <tfoot>
-                <tr>
-                    <th colspan="2">
-                    </th>
-                    <th>Total :</th>
-                    <th>
-                        <div id="rupiah"><?= $cart_total($p_kode); ?></div>
-                    </th>
+                <tr ng-repeat="bag in bags">
+                    <td>
+                        <img ng-src="{{ bag.image_url }}" width="50" height="50">
+                    </td>
+                    <td>
+                        {{ bag.nama }}
+                    </td>
+                    <td>
+                        {{ bag.ukuran }}
+                    </td>
+                    <td>
+                        {{ bag.ca_harga | rupiah }}
+                    </td>
+                    <td>
+                        {{ bag.ca_qty }}
+                    </td>
+                    <td>
+                        {{ bag.ca_tharga | rupiah }}
+                    </td>
+                    <td>
+                        <a title="Hapus item" ng-href="{{ bag.bag_delete }}"><i class="fa fa-times c-black"></i></a>
+                    </td>
                 </tr>
-                </tfoot>
             </table>
-        <?php else: ?>
-            <p>Tidak ada item di keranjang.</p>
-        <?php endif; ?>
+        </div>
     </div>
-    <script>
-        // ------------------------------------------------------ //
-        // Format Rupiah
-        // ------------------------------------------------------ //
-        var moneyFormat = wNumb({
-            mark: ',',
-            decimals: 2,
-            thousand: '.',
-            prefix: 'IDR ',
-            suffix: ''
-        });
-
-        $('[id="rupiah"]').each(function (index) {
-            var value = parseInt($(this).html()),
-                hasil = moneyFormat.to(value);
-
-            $(this).html(hasil);
-        });
-    </script>
-</div>
-<hr>
-<div class="row small">
-    <div class="col mb-1">
-        <button type="button" class="btn btn-sm btn-block c-modal-clr" data-dismiss="modal">Countinue Shopping</button>
-    </div>
-    <div class="col">
-        <a href="<?= site_url('bag'); ?>" class="btn btn-sm  btn-block c-modal-clr">Checkout</a>
+    <hr>
+    <div class="row small">
+        <div class="col mb-1">
+            <a class="btn btn-sm btn-block c-modal-clr" data-dismiss="modal">Countinue Shopping</a>
+        </div>
+        <div class="col">
+            <a ng-href="{{ bags_url }}" class="btn btn-sm  btn-block c-modal-clr">Checkout</a>
+        </div>
     </div>
 </div>
+
+
+<script src="<?= base_url('node_modules/angular/angular.min.js'); ?>"></script>
+<script>
+
+    var app = angular.module("kuze", []);
+    app.controller('bagCtrl', function ($http, $scope) {
+        var url = "/api/bag";
+        $http.get(url).then(function (response) {
+            $scope.bags = response.data.bags;
+            $scope.bags_promo_kode = response.data.bags_promo_kode;
+            $scope.bags_promo_ket = response.data.bags_promo_ket;
+            $scope.bags_promo_harga = response.data.bags_promo_harga;
+            $scope.bags_total = response.data.bags_total;
+            $scope.bags_grand_total = response.data.bags_grand_total;
+            $scope.bags_url = response.data.bags_url;
+        });
+
+        $scope.promo = function () {
+            var url = "/api/bag/promo/" + $scope.kode_promo;
+            $http.get(url).then(function (response) {
+                console.log(response.data);
+                $scope.bags = response.data.bags;
+                $scope.bags_promo_kode = response.data.bags_promo_kode;
+                $scope.bags_promo_ket = response.data.bags_promo_ket;
+                $scope.bags_promo_harga = response.data.bags_promo_harga;
+                $scope.bags_total = response.data.bags_total;
+                $scope.bags_grand_total = response.data.bags_grand_total;
+                $scope.bags_url = response.data.bags_url;
+            });
+        }
+    });
+
+    app.config(function ($httpProvider) {
+        $httpProvider.interceptors.push(function ($q) {
+            return {
+                'request': function (config) {
+                    $('.spinner').show();
+                    return config;
+                },
+
+                'response': function (response) {
+                    $('.spinner').hide();
+                    return response;
+                }
+            };
+        });
+    });
+
+    app.run(function ($rootScope) {
+        if ($rootScope.$last) {
+            $('.spinner').hide();
+        } else {
+            $('.spinner').show();
+        }
+
+    });
+
+    app.filter('rupiah', function () {
+        return function (nilai) {
+            while (/(\d+)(\d{3})/.test(nilai)) {
+                nilai = nilai.toString().replace(/(\d+)(\d{3})/, '$1' + '.' + '$2');
+            }
+            var nilai = 'IDR ' + nilai;
+            return nilai;
+        };
+    });
+</script>
