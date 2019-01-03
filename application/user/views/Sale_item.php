@@ -27,10 +27,10 @@ include "layout/Menu.php";
                 <!--                </div>-->
                 <div class="mb-3 d-flex align-items-center"><span class="d-inline-block mr-1">Sort by</span>
                     <select class="custom-select w-auto border-0">
-                        <option value="orderby_0">Default</option>
-                        <option value="orderby_1">Popularity</option>
-                        <option value="orderby_2">Rating</option>
-                        <option value="orderby_3">Newest first</option>
+                        <option value="orderby_0">A - Z</option>
+                        <option value="orderby_1">Z - A</option>
+                        <option value="orderby_2">Lowest Price</option>
+                        <option value="orderby_3">Higher Price</option>
                     </select>
                 </div>
             </header>
