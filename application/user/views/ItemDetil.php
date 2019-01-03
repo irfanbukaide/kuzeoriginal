@@ -81,7 +81,7 @@ include "layout/Menu.php";
                     <!--                                <label for="stok" class="c-detil-add">Stok</label>-->
                     <!--                                <input class="form-control" type="number" name="stok" id="stok" disabled>-->
                     <!--                            </div>-->
-                    <div class="col-lg-2 col-md-12">
+                    <div class="col-lg-3 col-md-12">
                         <div class="form-group">
                             <label for="qty" class="c-detil-add">QTY</label>
                             <input class="form-control" type="number" name="qty" id="qty" min="1" value="1">
