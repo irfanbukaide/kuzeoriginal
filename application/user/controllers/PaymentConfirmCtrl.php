@@ -167,7 +167,7 @@ class PaymentConfirmCtrl extends MY_Controller
         } else {
             $this->data->gagal = 'Mohon maaf anda belum mengisi metode pengiriman & pembayaran.';
             $this->session->set_flashdata('gagal', $this->data->gagal);
-            redirect('checkout/' . $orders_noid . '/alamat_pengiriman');
+            redirect('checkout/' . $orders_noid . '/shipping_address');
         }
     }
 

@@ -149,7 +149,7 @@ class BagCtrl extends MY_Controller
 
             }
             $this->cart->where_pengguna_kode($pengguna_kode)->delete();
-            redirect('checkout/' . $nomor_order . '/alamat_pengiriman');
+            redirect('checkout/' . $nomor_order . '/shipping_address');
         } else {
             $this->data->gagal = 'Tidak ada item didalam keranjang.';
             $this->session->set_flashdata('gagal', $this->data->gagal);
@@ -221,7 +221,7 @@ class BagCtrl extends MY_Controller
 
             }
             $this->cart->where_pengguna_kode($pengguna_kode)->delete();
-            redirect('checkout/' . $nomor_order . '/alamat_pengiriman');
+            redirect('checkout/' . $nomor_order . '/shipping_address');
         } else {
             $this->data->gagal = 'Tidak ada item didalam keranjang.';
             $this->session->set_flashdata('gagal', $this->data->gagal);

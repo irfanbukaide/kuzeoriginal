@@ -60,7 +60,7 @@ class Ongkir_transfer extends MY_Controller
         } else {
             $this->data->gagal = 'Mohon maaf anda belum mengisi alamat pengiriman';
             $this->session->set_flashdata('gagal', $this->data->gagal);
-            redirect('checkout/' . $order . '/alamat_pengiriman');
+            redirect('checkout/' . $order . '/shipping_address');
         }
 
     }
@@ -150,7 +150,7 @@ class Ongkir_transfer extends MY_Controller
         } else {
             $this->data->gagal = 'Mohon maaf anda belum mengisi alamat pengiriman';
             $this->session->set_flashdata('gagal', $this->data->gagal);
-            redirect('checkout/' . $orders_noid . '/alamat_pengiriman');
+            redirect('checkout/' . $orders_noid . '/shipping_address');
         }
     }
 
