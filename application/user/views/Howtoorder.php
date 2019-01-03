@@ -7,7 +7,7 @@ include "layout/Menu.php";
         <h5 class="text-center c-title-cart">How To Order</h5>
         <div class="c-breadcrumb text-center c-bread-padding">
             <nav class="c-nav-breadcrumb c-bread-cart">
-                <a class="breadcrumb-item" href="<?= site_url('HomeCtrl'); ?>">Home</a>
+                <a class="breadcrumb-item" href="<?= site_url('/'); ?>">Home</a>
                 <i class="fa fa-arrow-right"></i>
                 <a class="breadcrumb-item" href="<?= site_url('Faq'); ?>">How To Order</a>
             </nav>
