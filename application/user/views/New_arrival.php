@@ -57,7 +57,12 @@ include "layout/Menu.php";
                             <h3 class="h6 text-uppercase mb-1"><a ng-bind="item.i_nama" ng-href="{{item.i_url}}"
                                                                   class="text-dark"></a>
                             </h3><span class="text-muted" ng-bind="item.i_hrg | rupiah"></span>
+
                         </div>
+                        <a ng-href="{{item.i_url}}" class="btn btn-block btn-dark btn-buy" style="color: white;">
+                            <i class="fa fa-shopping-bag mr-2"></i>
+                            Add to Bag
+                        </a>
                     </div>
                 </div>
                 <!-- /product-->
