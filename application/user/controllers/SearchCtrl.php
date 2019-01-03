@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Pencarian extends MY_Controller
+class SearchCtrl extends MY_Controller
 {
     public function __construct()
     {
@@ -12,7 +12,6 @@ class Pencarian extends MY_Controller
     {
         $cari = $_GET['keyword'];
         $this->data->keyword = $cari;
-        $this->data->keywords = $this->item->select_pencarian($cari);
         $this->load->view('Pencarian', $this->data);
 
     }

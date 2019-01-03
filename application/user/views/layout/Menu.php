@@ -34,7 +34,7 @@
         </div>
         <div class="col-xl-8 col-lg-8 col-12">
             <div class="row mt-lg-1 mt-2">
-                <form class="form-inline my-2 my-lg-0 col-12 m-auto" action="<?= site_url('cari'); ?>" method="get">
+                <form class="form-inline my-2 my-lg-0 col-12 m-auto" action="<?= site_url('search'); ?>" method="get">
                     <div class="input-group col-12 px-0">
                         <input class="form-control" type="text" placeholder="Search"
                                aria-label="Search" id="keyword" name="keyword" autocomplete="off">
