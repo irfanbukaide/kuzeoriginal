@@ -1,7 +1,7 @@
 <!-- ======= Header ======= -->
 <div class="container">
     <div class="row">
-        <div class="col-12 text-right px-0">
+        <div class="col-12 text-right px-0 pt-2 pb-2">
             <?php if (isset($_SESSION['id'])): ?>
                 <a class="alert-link f-link c-header-a ml-1 mr-1" href="<?= site_url('order_status'); ?>">
                     Pending Orders

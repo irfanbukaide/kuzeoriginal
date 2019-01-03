@@ -18,7 +18,7 @@
 
     <link rel="stylesheet" href="<?php echo base_url('assets/css/header.css') ?>">
     <link rel="stylesheet" href="<?php echo base_url('assets/css/user.css') ?>">
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/eazy-style.css') ?>">
+    <link rel="stylesheet" href="<?php echo base_url('assets/css/style.css') ?>">
 
 
     <!-- Optional JavaScript -->
