@@ -85,7 +85,7 @@ include "layout/Menu.php";
             $scope.maxSize = 10;
             $scope.itemsPerPage = 9;
 
-            $http.get("/api/item/knew_arrival").then(function (response) {
+            $http.get("/api/search").then(function (response) {
                 var items = response.data;
                 $scope.totalItems = items.length;
 

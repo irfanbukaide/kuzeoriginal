@@ -10,8 +10,12 @@ class SearchCtrl extends MY_Controller
 
     public function index()
     {
+        $this->load->library('session');
+
         $cari = $_GET['keyword'];
-        $this->data->keyword = $cari;
+
+        $this->session->set_userdata('search', $cari);
+
         $this->load->view('Pencarian', $this->data);
 
     }

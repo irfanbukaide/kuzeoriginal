@@ -76,5 +76,9 @@ $route['api/category/item_all'] = 'CategoryApiCtrl/json_item_all';
 $route['api/category/item_category/(:any)'] = 'CategoryApiCtrl/json_item_category/$1';
 $route['api/category/item_image'] = 'CategoryApiCtrl/json_item_image';
 
+
+// api search
+$route['api/search'] = 'SearchApiCtrl';
+
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
