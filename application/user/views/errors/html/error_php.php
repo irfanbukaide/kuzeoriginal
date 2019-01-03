@@ -18,7 +18,7 @@ $CI->load->helper('url');
 
     <link rel="stylesheet" href="<?= base_url('assets/vendor/font-awesome/css/font-awesome.min.css'); ?>"
           type="text/css">
-    <link rel="stylesheet" href="<?= base_url('assets/css/eazy-style.css'); ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/style.css'); ?>">
     <script src="<?= base_url('assets/vendor/jquery/jquery.min.js'); ?>"></script>
     <script src="<?= base_url('assets/vendor/bootstrap/js/bootstrap.min.js'); ?>"></script>
 
