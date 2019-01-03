@@ -27,17 +27,18 @@ include "layout/Menu.php";
                 <!--                    <a href="#" class="product-grid-header-show ">All</a>-->
                 <!--                </div>-->
                 <div class="mb-3 d-flex align-items-center"><span class="d-inline-block mr-1">Sort by</span>
-                    <select class="custom-select w-auto border-0">
-                        <option value="orderby_0">Default</option>
-                        <option value="orderby_1">Popularity</option>
-                        <option value="orderby_2">Rating</option>
-                        <option value="orderby_3">Newest first</option>
+                    <select class="custom-select w-auto border-0" ng-model="sorting" ng-init="sorting">
+                        <option value="">Default</option>
+                        <option value="i_nama">Name : A-Z</option>
+                        <option value="-i_nama">Name : Z-A</option>
+                        <option value="i_hrg">Price : Lowest</option>
+                        <option value="-i_hrg">Price : Higher</option>
                     </select>
                 </div>
             </header>
             <div class="row">
                 <!-- product-->
-                <div ng-repeat="item in items" class="col-xl-3 col-sm-3">
+                <div ng-repeat="item in items | orderBy: sorting" class="col-xl-3 col-sm-3">
                     <div class="product">
                         <div class="product-image">
                             <div class="ribbon ribbon-info" ng-if="item.i_new == 1">New Arrival</div>
