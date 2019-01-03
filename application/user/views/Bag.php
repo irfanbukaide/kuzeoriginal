@@ -109,16 +109,16 @@ include "layout/Menu.php";
                     <table class="table table-bordered">
                         <tbody>
                         <tr>
-                            <th class="p-1 pl-4">Coupon</th>
+                            <td class="pl-3">Coupon</td>
                             <td class="text-right">
                                 <span class="c-price-cart-3 pl-3" ng-bind="bags_promo_kode"></span>
                             </td>
                         </tr>
                         <tr>
                         <tr>
-                            <th class="p-1 pl-4">Note</th>
+                            <td class="pl-3">Note</td>
                             <td class="text-right">
-                                <span class="c-price-cart-2 pl-3 c-l-hight" ng-bind="bags_promo_ket"></span>
+                                <span class="c-price-cart-2 pl-3" ng-bind="bags_promo_ket"></span>
                             </td>
                         </tr>
                         </tbody>
@@ -129,30 +129,30 @@ include "layout/Menu.php";
                     <table class="table table-bordered">
                         <tbody>
                         <tr>
-                            <th class="c-table-cart-total p-1 pl-4">Total Price</th>
+                            <td class="c-table-cart-total pl-3">Total Price</td>
                             <td class="text-right"><span class="c-price-cart-3 pl-3"
                                                          ng-bind="bags_total | rupiah"></span>
                             </td>
                         </tr>
                         <tr>
-                            <th class="p-1 pl-4">Disc. Total Price (-)</th>
+                            <td class="pl-3">Disc. Total Price (-)</td>
                             <td class="text-right"><span class="c-price-cart-3 pl-3 text-center"
                                                          ng-bind="bags_promo_harga | rupiah"></span>
                             </td>
                         </tr>
                         <tr>
-                            <th class="p-1 pl-4">Shipping Charges</th>
+                            <td class="pl-3">Shipping Charges</td>
                             <td class="text-right"><span class="c-price-cart-3 pl-3">-</span></td>
                         </tr>
                         <tr>
-                            <th nowrap class="p-1 pl-4 pr-4">Disc. Shipping Charges</th>
+                            <td nowrap class="pl-3 pr-4">Disc. Shipping Charges</td>
                             <td class="text-right"><span class="c-price-cart-3 pl-3">-</span></td>
                         </tr>
 
                         <tr>
-                            <th class="p-1 pl-4">Grand Total</th>
+                            <td class="pl-3">Grand Total</td>
                             <td class="text-right">
-                                <span class="c-price-cart-2 pl-3 c-l-hight" ng-bind="bags_grand_total | rupiah"></span>
+                                <span class="c-price-cart-2 pl-3" ng-bind="bags_grand_total | rupiah"></span>
                             </td>
                         </tr>
                         </tbody>

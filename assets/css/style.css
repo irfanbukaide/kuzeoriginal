@@ -933,11 +933,11 @@ table.c-table-vertical td {
     vertical-align: middle;
 }
 
-th {
-    line-height: 50px;
-    color: #444;
-    font-family: 'Poppins', sans-serif;
-}
+/*th {*/
+/*line-height: 50px;*/
+/*color: #444;*/
+/*font-family: 'Poppins', sans-serif;*/
+/*}*/
 
 .c-table-thumbnail {
     width: 200px;
@@ -1013,11 +1013,7 @@ p.c-cart-productname:hover a {
 .c-price-cart-3 {
     font-family: 'Poppins', sans-serif;
     color: #999;
-    line-height: 35px;
-}
-
-.c-l-hight {
-    line-height: 35px;
+    /*line-height: 35px;*/
 }
 
 .c-black {
@@ -1028,9 +1024,9 @@ p.c-cart-productname:hover a {
     margin-top: 120px;
 }
 
-.c-table-cart-total {
-    width: 150px;
-}
+/*.c-table-cart-total {*/
+/*width: 150px;*/
+/*}*/
 
 .c-cart-total th {
     letter-spacing: .04em;
