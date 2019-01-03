@@ -36,6 +36,7 @@ $route['item/(:any)/add_to_bag'] = 'BagCtrl/add';
 $route['bag'] = 'BagCtrl';
 $route['bag/modal_bag'] = 'BagCtrl/modal_bag';
 $route['bag/(:any)/delete'] = 'BagCtrl/delete/$1';
+$route['bag/checkout'] = 'BagCtrl/checkout';
 $route['bag/checkout/with_promo/(:any)'] = 'BagCtrl/checkout_with_promo/$1';
 $route['checkout/(:any)/shipping_address'] = 'AddressCtrl/get/$1';
 $route['checkout/(:any)/shipping_address/simpan'] = 'AddressCtrl/simpan';
