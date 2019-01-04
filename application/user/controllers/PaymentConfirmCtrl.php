@@ -346,7 +346,7 @@ class PaymentConfirmCtrl extends MY_Controller
 
         $order = $this->order->where('orders_noid', $this->uri->segment(2))->get();
         if ($order->orders_status == 3) {
-            $this->load->view('Konfirmasi_success', $this->data);
+            $this->load->view('Konfirmasi_sukses', $this->data);
         } else {
             redirect('checkout/' . $this->uri->segment(2) . '/payment_confirm');
         }

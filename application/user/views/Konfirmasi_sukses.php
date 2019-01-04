@@ -4,89 +4,66 @@ include "layout/Menu.php";
 ?>
 <?php $nomor_order = $this->uri->segment(2); ?>
     <!-- ======= Banner Checkout ======= -->
-    <div class="wrapper-cart c-margin-bot-cart">
-        <h5 class="text-center c-title-cart">Konfirmasi success</h5>
+    <div class="wrapper-cart container">
+        <h5 class="text-center c-title-cart">Result</h5>
         <div class="c-breadcrumb text-center c-bread-padding">
             <nav class="c-nav-breadcrumb c-bread-cart">
-                <a class="breadcrumb-item " href="<?= site_url('/'); ?>">Home</a>
+                <a class="breadcrumb-item " href="<?= site_url('cart'); ?>">Bag</a>
                 <i class="fa fa-arrow-right"></i>
-                <a class="breadcrumb-item " href="<?= site_url('cart'); ?>">Keranjang</a>
+                <a class="breadcrumb-item " href="<?= site_url('Alamat'); ?>">Shipping Address</a>
                 <i class="fa fa-arrow-right"></i>
-                <a class="breadcrumb-item " href="<?= site_url('Alamat'); ?>">Alamat</a>
+                <a class="breadcrumb-item " href="<?= site_url('Metode_pengiriman'); ?>">Payment Method</a>
                 <i class="fa fa-arrow-right"></i>
-                <a class="breadcrumb-item " href="<?= site_url('Metode_pengiriman'); ?>">Metode Pengiriman</a>
-                <i class="fa fa-arrow-right"></i>
-                <a class="breadcrumb-item" href="">Detail Pesanan</a>
+                <a class="breadcrumb-item" href="">Detail Order</a>
                 <i class="fa fa-arrow-right"></i>
                 <a class="breadcrumb-item " href="<?= site_url('Konfirmasi'); ?>">Confirmation</a>
                 <i class="fa fa-arrow-right"></i>
-                <a class="breadcrumb-item active-bread" href="<?= site_url('Konfirmasi_success'); ?>">Konfirmasi
-                    success</a>
+                <a class="breadcrumb-item active-bread" href="<?= site_url('Konfirmasi_success'); ?>">Result</a>
             </nav>
         </div>
     </div>
 
 
-    <!-- ======= Detail Order ======= -->
-    <div class="container-fluid c-padding-header c-margin-bot-detail-order">
-        <!--        <div class="c-order-info">-->
-        <!--            <p>Thank you, Your order has been received</p>-->
-        <!--            <ul>-->
-        <!--                <li>Order number : <b>#421504</b></li>-->
-        <!--                <li>Date : <b>19 May 2018</b></li>-->
-        <!--            </ul>-->
-        <!--        </div>-->
-
-        <div class="container">
-            <h5 class="text-center c-order-info mb-3">DETAIL PESANAN : #<?= $nomor_order; ?></h5>
-            <br>
-            <div class="row mt-3">
-                <div class="col-md-6 col-sm-12">
-                    <div class="c-order-info">
-                        <p class="mb-1"><i class="fa fa-credit-card mr-2"></i><b>Nama Penerima</b></p>
-                        <p class="ml-5 mb-0"> <?= $nama_nomor(); ?></p>
-
-                    </div>
-                </div>
-                <div class="col-md-6 col-sm-12">
-                    <div class="c-order-info">
-                        <p class="mb-2"><i class="fa fa-credit-card mr-2"></i> <b>Rekening Transfer</b></p>
-                        <p class="ml-5"><?= $metode_pembayaran(); ?></p>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6 col-sm-12">
-                    <div class="c-order-info">
-                        <p class="mb-2"><i class="fa fa-address-book mr-2"></i> <b>Alamat Pengiriman</b></p>
-                        <p class="ml-5"> <?= $pengiriman(); ?></p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-sm-12">
-                    <div class="c-order-info">
-                        <p class="mb-2"><i class="fa fa-car mr-2"></i> <b>Metode Pengiriman</b></p>
-                        <p class="ml-5"> <?= $jasa(); ?></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <hr style="color:black;">
-
-        <h4 class="text-center mt-5">
-            <b>Konfirmasi Pembayaran</b>
-        </h4>
-        <h2 class="text-center">success</h2>
+    <div class="container">
+        <h5 class="text-center mb-3">Detail Order : #<?= $nomor_order; ?></h5>
         <br>
-        <div class="row mb-3">
-            <div class="col-3 m-auto">
-                <a href="<?= site_url('order_status'); ?>"
-                   class="btn btn-csr c-btn-cart btn-lg pt-4 pb-4 btn-block f-button-font">
-                    Lihat Status</a>
+        <div class="row mt-3">
+            <div class="col-md-6 col-sm-12">
+                <p class="mb-1"><i class="fa fa-credit-card mr-2"></i><b>Recipient</b></p>
+                <p> <?= $nama_nomor(); ?></p>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <p class="mb-2"><i class="fa fa-credit-card mr-2"></i> <b>Bank Account</b></p>
+                <p><?= $metode_pembayaran(); ?></p>
             </div>
         </div>
-
+        <div class="row">
+            <div class="col-md-6 col-sm-12">
+                <p class="mb-2"><i class="fa fa-address-book mr-2"></i> <b>Shipping Address</b></p>
+                <p> <?= $pengiriman(); ?></p>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <p class="mb-2"><i class="fa fa-car mr-2"></i> <b>Shipping Method</b></p>
+                <p> <?= $jasa(); ?></p>
+            </div>
+        </div>
     </div>
+
+    <hr style="color:black;">
+
+    <h4 class="text-center mt-5">
+        <b>Payment Confirmation</b>
+    </h4>
+    <h2 class="text-center">Success</h2>
+    <br>
+    <div class="row mb-3">
+        <div class="col-3 m-auto">
+            <a href="<?= site_url('order_status'); ?>"
+               class="btn btn-block c-cart-detail c-cart-p">
+                Check Status</a>
+        </div>
+    </div>
+
         <!--
     </div>
 
