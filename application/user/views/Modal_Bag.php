@@ -70,7 +70,7 @@
             $scope.bags_promo_harga = response.data.bags_promo_harga;
             $scope.bags_total = response.data.bags_total;
             $scope.bags_grand_total = response.data.bags_grand_total;
-            $scope.bags_url = response.data.bags_url;
+            $scope.bags_url = '/bag';
         });
 
         $scope.promo = function () {
@@ -83,7 +83,7 @@
                 $scope.bags_promo_harga = response.data.bags_promo_harga;
                 $scope.bags_total = response.data.bags_total;
                 $scope.bags_grand_total = response.data.bags_grand_total;
-                $scope.bags_url = response.data.bags_url;
+                $scope.bags_url = '/bag';
             });
         }
     });

@@ -81,12 +81,13 @@ class PaymentConfirmCtrl extends MY_Controller
 
             $biaya_subtotal = function () use ($orders_noid) {
                 $hasil = 0;
-                $uniq = $this->order->where('orders_noid', $orders_noid)->get()->orders_uniq;
+//                $uniq = $this->order->where('orders_noid', $orders_noid)->get()->orders_uniq;
                 foreach ($this->order_detil->where('orders_noid', $orders_noid)->get_all() as $od) {
                     $hasil += (int)$od->orders_detil_tharga;
                 }
 
-                return $hasil + $uniq;
+//                return $hasil + $uniq;
+                return $hasil;
             };
 
             $biaya_pengiriman = function () use ($orders_noid) {
@@ -100,7 +101,7 @@ class PaymentConfirmCtrl extends MY_Controller
                 redirect('/');
             }
 
-            $grand_total = function () use ($biaya_subtotal, $promo, $biaya_pengiriman) {
+            $grand_total = function () use ($unik, $biaya_subtotal, $promo, $biaya_pengiriman) {
 
                 $harga = $biaya_subtotal();
                 $diskon = $promo();
@@ -124,7 +125,7 @@ class PaymentConfirmCtrl extends MY_Controller
                     $hasil = $harga;
                 }
 
-                $hasil = $hasil + $biaya_pengiriman();
+                $hasil = $hasil + $biaya_pengiriman() + $unik();
 
                 return $hasil;
             };
