@@ -92,13 +92,11 @@
                 <div class="text-success">Nama Pengirim :</div>
                 <p class="small">
                     <?php if ($pengiriman_kontak->orders_pengiriman_s_nama != NULL): ?>
+                        <?= $pengiriman_kontak->orders_pengiriman_s_nama; ?><br>
+                        <?= $pengiriman_kontak->orders_pengiriman_s_kontak; ?>
+                    <?php else: ?>
                         <?= $pengiriman_kontak->toko->t_nama; ?><br>
                         <?= $pengiriman_kontak->toko->t_email; ?>
-                    <?php elseif ($pengiriman_kontak->orders_pengiriman_r_nama != NULL): ?>
-                        <?= $pengiriman_kontak->orders_pengiriman_r_nama; ?><br>
-                        <?= $pengiriman_kontak->orders_pengiriman_r_kontak; ?>
-                    <?php else: ?>
-                        Belum ada pengirim
                     <?php endif; ?>
                 </p>
             </div>
