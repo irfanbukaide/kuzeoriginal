@@ -13,6 +13,7 @@ class Resi extends MY_Controller
 
     public function index()
     {
+
         $pengiriman = function ($orders_noid) {
             $hasil = new stdClass();
             $order_pengiriman = $this->order_pengiriman->where('orders_noid', $orders_noid)->get();
@@ -38,7 +39,7 @@ class Resi extends MY_Controller
         };
 
         $data = function () use ($pengiriman) {
-            $resis = $this->order->with_order_resi()->with_order_pengiriman()->get_all();
+            $resis = $this->order->where('pengguna_kode', $_SESSION['id'])->with_order_resi()->with_order_pengiriman()->get_all();
 
             if ($resis) {
                 foreach ($resis as $resi) {

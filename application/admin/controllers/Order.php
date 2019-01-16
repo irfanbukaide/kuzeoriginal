@@ -386,7 +386,10 @@ class Order extends MY_Controller
         };
 
         $pengiriman_kontak = function () use ($id) {
-            return $order_pengiriman = $this->order_pengiriman->where('orders_noid', $id)->get();
+            $order_pengiriman = $this->order_pengiriman->where('orders_noid', $id)->get();
+            $order_pengiriman->toko = $this->toko->get();
+
+            return $order_pengiriman;
         };
 
         $jasa = function () use ($id) {
