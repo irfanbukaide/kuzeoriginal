@@ -85,30 +85,48 @@
             <div class="col">
                 <div class="text-success">Tujuan Pengiriman :</div>
                 <p class="small">
-                    <?= $pengiriman; ?>
+                    <?php
+                    if ($pengiriman != NULL) {
+                        echo $pengiriman;
+                    } else {
+                        echo 'Belum ada tujuan pengiriman';
+                    }
+                    ?>
                 </p>
             </div>
             <div class="col">
                 <div class="text-success">Nama Pengirim :</div>
                 <p class="small">
-                    <?php if ($pengiriman_kontak->orders_pengiriman_s_nama != NULL): ?>
-                        <?= $pengiriman_kontak->orders_pengiriman_s_nama; ?><br>
-                        <?= $pengiriman_kontak->orders_pengiriman_s_kontak; ?>
-                    <?php else: ?>
-                        <?= $pengiriman_kontak->toko->t_nama; ?><br>
-                        <?= $pengiriman_kontak->toko->t_email; ?>
-                    <?php endif; ?>
+                    <?php
+
+                    if ($kontak_pengirim != NULL) {
+                        if ($kontak_pengirim->dropship) {
+                            echo $kontak_pengirim->nama;
+                            echo '<br>';
+                            echo $kontak_pengirim->kontak;
+                        } else {
+                            echo $toko->nama;
+                            echo '<br>';
+                            echo $toko->kontak;
+                        }
+                    } else {
+                        echo 'Belum ada pengirim';
+                    }
+                    ?>
                 </p>
             </div>
             <div class="col">
                 <div class="text-success">Nama Penerima :</div>
                 <p class="small">
-                    <?php if ($pengiriman_kontak->orders_pengiriman_r_nama != NULL): ?>
-                        <?= $pengiriman_kontak->orders_pengiriman_r_nama; ?><br>
-                        <?= $pengiriman_kontak->orders_pengiriman_r_kontak; ?>
-                    <?php else: ?>
-                        Belum ada penerima
-                    <?php endif; ?>
+                    <?php
+                    if ($kontak_penerima != NULL) {
+                        echo $kontak_penerima->nama;
+                        echo '<br>';
+                        echo $kontak_penerima->kontak;
+                    } else {
+                        echo 'Belum ada penerima';
+                    }
+                    ?>
                 </p>
             </div>
         </div>

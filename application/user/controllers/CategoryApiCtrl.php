@@ -47,11 +47,14 @@ class CategoryApiCtrl extends CI_Controller
         $categories = array();
         $item_categories = $this->item_kategori->where('i_kode', $i_kode)->with_kategori()->get_all();
         foreach ($item_categories as $item_category) {
-            array_push($categories, $item_category->kategori->k_nama);
+            if (isset($item_category->kategori)) {
+                array_push($categories, $item_category->kategori->k_nama);
+            }
         }
 
 
         return implode(', ', $categories);
+//        return $categories;
 
     }
 

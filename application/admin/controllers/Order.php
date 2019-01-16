@@ -385,11 +385,30 @@ class Order extends MY_Controller
 
         };
 
-        $pengiriman_kontak = function () use ($id) {
-            $order_pengiriman = $this->order_pengiriman->where('orders_noid', $id)->get();
-            $order_pengiriman->toko = $this->toko->get();
+        $pengirim = function () use ($id) {
 
-            return $order_pengiriman;
+            $data = $this->order_pengiriman
+                ->fields('dropship,orders_pengiriman_s_nama as nama,orders_pengiriman_s_kontak as kontak')
+                ->where('orders_noid', $id)
+                ->get();
+
+            return $data;
+        };
+
+        $toko = function () {
+            $data = $this->toko
+                ->fields('t_nama as nama,t_email as kontak')
+                ->get();
+            return $data;
+        };
+
+        $penerima = function () use ($id) {
+            $data = $this->order_pengiriman
+                ->fields('dropship,orders_pengiriman_r_nama as nama,orders_pengiriman_r_kontak as kontak')
+                ->where('orders_noid', $id)
+                ->get();
+
+            return $data;
         };
 
         $jasa = function () use ($id) {
@@ -489,7 +508,9 @@ class Order extends MY_Controller
         $this->data->duedate = $duedate();
         $this->data->order_detils = $order_detils();
         $this->data->pengiriman = $pengiriman();
-        $this->data->pengiriman_kontak = $pengiriman_kontak();
+        $this->data->kontak_pengirim = $pengirim();
+        $this->data->kontak_penerima = $penerima();
+        $this->data->toko = $toko();
         $this->data->jasa = $jasa();
         $this->data->metode_pembayaran = $metode_pembayaran();
         $this->data->orders_total = $orders_total();
